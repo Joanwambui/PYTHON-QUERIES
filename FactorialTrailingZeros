@@ -1,0 +1,21 @@
+def trailing_zeroes(n):
+  
+  def factorial(n):
+    answer = 1
+    for i in range(1, n+1):
+        answer = answer * i
+    return answer
+    
+  n_factorial = factorial(n)
+  zero_count = 0
+  while n_factorial % 10 == 0:
+    zero_count += 1
+    n_factorial //= 10
+
+  return zero_count
+
+---Second solution
+def trailing_zeroes(n):
+  if n < 5:
+    return 0
+  return n // 5
