@@ -1,0 +1,5 @@
+# Type your code here:
+def  circle_perimeter(radius):
+    perimeter = 2 * 3.141592653589793 * radius
+    return perimeter 
+    
