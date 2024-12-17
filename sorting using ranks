@@ -1,0 +1,13 @@
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+ms_employee_salary.head()
+
+# Create a new column 'salary_rank' that ranks salaries descending, grouped by 'id'
+ms_employee_salary['salary_rank'] = ms_employee_salary.groupby('id')['salary'] \
+                                                       .rank(ascending=False, method='dense')
+# Filter rows where 'salary_rank' equals 1
+top_ranked_salaries = ms_employee_salary[ms_employee_salary['salary_rank'] == 1]
+
+result = top_ranked_salaries[['id', 'first_name', 'department_id', 'last_name', 'salary']]
