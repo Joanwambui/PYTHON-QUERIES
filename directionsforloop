@@ -1,0 +1,38 @@
+d=input()
+x,y=0,0
+for l in d: 
+ if l=='N':y+=1
+ if l=='S':y-=1
+ if l=='E':x+=1
+ if l=='W':x-=1
+print(f'({x},{y})')
+
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+
+directions = input().strip().upper()  # Ensure input is uppercase
+
+def find_treasure_coordinates(directions):
+    # Initialize coordinates at the origin
+    x, y = 0, 0
+
+    # Process each character in the input string
+    for direction in directions:
+        if direction == 'N':
+            y += 1
+        elif direction == 'S':
+            y -= 1
+        elif direction == 'E':
+            x += 1
+        elif direction == 'W':
+            x -= 1
+
+    # Return the final coordinates as a string
+    return f"({x},{y})"
+
+# Example input (Replace with actual input during testing)
+output = find_treasure_coordinates(directions)
+print(output)
