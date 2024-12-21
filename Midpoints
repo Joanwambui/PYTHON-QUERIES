@@ -1,0 +1,16 @@
+# Read inputs for the first point
+x_1, y_1 = [int(i) for i in input().split()]
+x_2, y_2 = [int(i) for i in input().split()]
+
+# Calculate the midpoint
+x_mid = (x_1 + x_2) / 2
+y_mid = (y_1 + y_2) / 2
+
+# Convert to integer if the result is a whole number
+if x_mid.is_integer():
+    x_mid = int(x_mid)
+if y_mid.is_integer():
+    y_mid = int(y_mid)
+
+# Output the midpoint coordinates as two numbers separated by whitespace
+print(f"{x_mid} {y_mid}")
