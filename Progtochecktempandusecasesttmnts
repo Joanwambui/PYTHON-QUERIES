@@ -1,0 +1,26 @@
+for i in range(int(input())):
+    b, t = [int(j) for j in input().split()]
+    t_f = t * (9 / 5) + 32
+    if b == t_f:
+        print('Same')
+    elif b > t_f:
+        print('Higher')
+    else:
+        print('Lower')
+
+
+# Number of input lines
+n = int(input())
+
+# Process each line
+for _ in range(n):
+    b, t = map(int, input().split())  # Read Ben's and Tom's temperatures
+    t_fahrenheit = t * 9 / 5 + 32     # Convert Tom's Celsius to Fahrenheit
+
+    # Compare Ben's and Tom's temperatures in Fahrenheit
+    if b > t_fahrenheit:
+        print("Higher")
+    elif b < t_fahrenheit:
+        print("Lower")
+    else:
+        print("Same")
