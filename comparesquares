@@ -1,0 +1,20 @@
+def compare_squares():
+    import sys
+    data = sys.stdin.read().strip().split()
+    N = int(data[0])
+    results = []
+
+    for i in range(N):
+        a, b = int(data[2 * i + 1]), int(data[2 * i + 2])
+        if a**2 + b**2 > (a + b)**2:
+            results.append('>')
+        elif a**2 + b**2 < (a + b)**2:
+            results.append('<')
+        else:
+            results.append('=')
+
+    print('\n'.join(results))
+
+# Example usage
+if __name__ == "__main__":
+    compare_squares()
