@@ -1,0 +1,21 @@
+l=input()
+print(int(sum([ord(l[i])for i in range(len(l))])**0.5))
+
+You get a a line of a String and you have to convert the characters of the line to their ASCII number and take the sum of these.
+After this step, you take the square-root of the sum and round down, if needed.
+import math
+
+# Get the input line
+line = input()
+
+# Convert each character to its ASCII value and sum them
+ascii_sum = sum(ord(char) for char in line)
+
+# Calculate the square root of the sum
+square_root = math.sqrt(ascii_sum)
+
+# Round down the square root
+rounded_square_root = math.floor(square_root)
+
+# Print the result
+print(rounded_square_root)
