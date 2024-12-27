@@ -1,0 +1,18 @@
+# Get the input values
+N = int(input("Enter the number of eggs Bob possesses: "))
+M = int(input("Enter the number of eggs Alice can buy: "))
+
+# Calculate the number of eggs Bob can sell to Alice
+eggs_to_sell = min(N, M)
+
+# Print the result
+print(eggs_to_sell)
+
+Bob is a farmer who lives in Axbourg, a small village of 100 inhabitants. He owns 7 chickens, 4 cows and 5 pigs. Each chicken lays in average 6 eggs per week. He has N eggs and Alice wants to buy at most M eggs. Display how many eggs Bob can sell to Alice.
+
+INPUT:
+Line 1 : The number N of eggs that Bob possess.
+Line 2 : The number M of eggs that Alice can buy.
+
+OUTPUT:
+An integer that is the number of eggs that Bob can sell to Alice
