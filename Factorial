@@ -1,0 +1,13 @@
+import math
+
+# Input: total items (k) and selected items (n)
+n = int(input())
+k = int(input())
+
+if n <= k:
+    # Calculate permutation: k! / (k - n)!
+    result = math.factorial(k) // math.factorial(k - n)
+    print(result)
+else:
+    # When n > k, it's not possible to select n items from k
+    print(0)
