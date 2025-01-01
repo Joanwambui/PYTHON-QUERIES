@@ -1,0 +1,13 @@
+def elevatorfloor(log):
+    floor = 0  # Initialize floor inside the function
+    for i in log:
+        if i == '(':
+            floor += 1  # Increment for '('
+        elif i == ')':
+            floor -= 1  # Decrement for ')'
+    return floor  # Return the final floor value
+
+# Example usage
+log = str(input(""))  # Getting input as a string
+result = elevatorfloor(log)
+print(f"{result}")
