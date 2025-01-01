@@ -1,0 +1,41 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Sample DataFrame representing schools in NAIROBI
+data = {
+    'school_name': ['School A', 'School B', 'School C', 'School D', 'School E'],
+    'latitude': [-1.286389, -1.283333, -1.281667, -1.2925, -1.290556],
+    'longitude': [36.817223, 36.8225, 36.825, 36.810278, 36.818056],
+    'sponsor_type': ['Public', 'Private', 'Religious', 'Public', 'Private'],
+    'school_count': [10, 15, 8, 20, 12]
+}
+
+df = pd.DataFrame(data)
+
+# Filter the data for schools in 'NAIROBI'
+df_nairobi = df[df['sponsor_type'].notna()]
+
+# Set up a scatter plot with bubble sizes and colors based on sponsor type
+plt.figure(figsize=(12, 8))
+sns.scatterplot(
+    data=df_nairobi,
+    x='longitude',
+    y='latitude',
+    size='school_count',
+    hue='sponsor_type',
+    sizes=(50, 500),  # Scale of bubble sizes
+    alpha=0.7,  # Transparency for better visibility
+    palette='Set2'  # Distinct colors for sponsor types
+)
+
+# Add labels and title
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.title('Distribution of Schools in NAIROBI by Sponsor Type')
+plt.legend(title='Sponsor Type', loc='upper left', bbox_to_anchor=(1, 1))
+plt.grid(visible=True, linestyle='--', alpha=0.5)
+
+# Show the plot
+plt.tight_layout()
+plt.show()
