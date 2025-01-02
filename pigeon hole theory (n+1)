@@ -1,0 +1,6 @@
+n= int(input())
+def least_socks_to_match(n):
+    return n + 1
+
+
+print(least_socks_to_match(n))  
