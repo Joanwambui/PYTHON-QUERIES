@@ -1,0 +1,18 @@
+#Task 1: Average daily temperatures
+Write a function that takes a list of numbers representing daily temperatures in degrees Celsius
+and returns the number of days when the temperature was above the average.
+
+temperature = [20, 22, 24, 19, 25, 21]
+sum = 0
+count = 0
+numberofdays = 0
+
+
+for i in temperature:
+    sum += i
+    count += 1
+    if i > (sum/count):
+        numberofdays += 1
+
+print(numberofdays)
+    
