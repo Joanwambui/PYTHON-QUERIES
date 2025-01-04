@@ -1,0 +1,15 @@
+# Define the class
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        
+    def greet(self):
+        """Greet the person"""
+        print(f"Hello my name is {self.name} and my age is {self.age} years old")
+
+# Create an instance of the class
+person_instance = Person("Alice", 30)
+
+# Call the greet method
+person_instance.greet()
