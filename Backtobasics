@@ -13,3 +13,13 @@ year = 2019
 printcalendar(year) 
 
 
+#Deriving month,day 
+from datetime import date
+x = date.today()
+print(x)
+month = x.month
+print(month)
+day = x.day
+year = x.year
+print(year)
+
