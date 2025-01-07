@@ -38,3 +38,19 @@ print('Time tm is ',
       tm.minute, ' minutes ',
       tm.second, ' seconds and ',
       tm.microsecond, ' microseconds')
+
+
+from datetime import datetime
+
+print(datetime.strptime('5/5/2019',
+                        '%d/%m/%Y'))
+
+2019-05-05 00:00:00
+
+import datetime
+
+x = datetime.datetime(2018, 5, 12, 2, 25, 50, 13)
+
+print(x.strftime("%b %d %Y %H:%M:%S"))
+
+May 12 2018 02:25:50
