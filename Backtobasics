@@ -23,3 +23,8 @@ day = x.day
 year = x.year
 print(year)
 
+
+import datetime
+tm = datetime.time(2, 25, 50, 13)
+print(tm)
+02:25:50.000013
