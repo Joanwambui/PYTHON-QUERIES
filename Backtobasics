@@ -54,3 +54,10 @@ x = datetime.datetime(2018, 5, 12, 2, 25, 50, 13)
 print(x.strftime("%b %d %Y %H:%M:%S"))
 
 May 12 2018 02:25:50
+
+
+#Print all weekdays sequence starting with monday as first day of the week
+import calendar
+obj = calendar.Calendar(firstweekday=0)
+for day in obj.iterweekdays()
+    print(day)
