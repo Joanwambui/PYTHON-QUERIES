@@ -92,3 +92,7 @@ s = "Python is fun"
 
 # Replaces 'fun' with 'awesome'
 print(s.replace("fun", "awesome"))
+
+#USING FORMAT()
+s = "My name is {} and I am {} years old.".format("Alice", 22)
+print(s)
