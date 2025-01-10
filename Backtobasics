@@ -63,3 +63,22 @@ for day in obj.iterweekdays()
     print(day)
 
 not any([False, False, False]) will evaluate to true as it will check all false inside the brackets then converts to true
+
+#SLICING
+s = "Keepeyecontact"
+
+# Retrieves characters from index 1 to 3: 'eek'
+print(s[1:4])  
+
+# Retrieves characters from beginning to index 2: 'Gee'
+print(s[:3])   
+
+# Retrieves characters from index 3 to the end: 'ksforGeeks'
+print(s[3:])   
+
+# Reverse a string
+print(s[::-1])
+eep
+Kee
+peyecontact
+tcatnoceyepeeK
