@@ -82,3 +82,13 @@ eep
 Kee
 peyecontact
 tcatnoceyepeeK
+
+s = "   Gfg   "
+
+# Removes spaces from both ends
+print(s.strip())    
+
+s = "Python is fun"
+
+# Replaces 'fun' with 'awesome'
+print(s.replace("fun", "awesome"))
