@@ -96,3 +96,38 @@ print(s.replace("fun", "awesome"))
 #USING FORMAT()
 s = "My name is {} and I am {} years old.".format("Alice", 22)
 print(s)
+
+
+##IMMUTABLE OBJECTS
+#Integer
+x = 5
+print(id(x))  # Memory address of the object
+
+x += 1  # Creates a new integer object
+print(id(x))  # Different memory address, as integers are immutable
+
+
+#Strings
+s = "hello"
+print(id(s))  # Memory address of the object
+
+s += " world"  # Creates a new string object
+print(id(s))  # Different memory address
+
+
+#Tuple
+t = (1, 2, 3)
+print(id(t))  # Memory address of the object
+
+t = t + (4,) # Creates a new tuple object
+print(t)
+print(id(t))  # Different memory address
+
+a = True
+b = a  # References the same immutable object
+print(id(a), id(b))  # Same memory address
+
+# Reassignment doesn't modify the original object
+a = False
+print(id(a), id(b))  # `a` now refers to a different immutable object
+
