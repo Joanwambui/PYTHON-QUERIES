@@ -1,0 +1,25 @@
+n=input()
+s=0
+for i, k in enumerate(n):
+    s+=int(k)**(i+1)
+
+if s==int(n):
+    print(f"Yes, {n} is a Disarium Number.")
+else:
+    print(f"No, {n} is not a Disarium Number.")
+
+
+
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+
+n = input()
+res = 0
+for k in range(len(n)):
+    res+= int(n[k])**(k+1)
+print(f"Yes, {n} is a Disarium Number." if n == str(res) else f"No, {n} is not a Disarium Number.")
+
+
