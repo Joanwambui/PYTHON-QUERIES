@@ -1,0 +1,14 @@
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+
+garbage = input().lower()
+message = input()
+
+for i in garbage:
+    message = message.replace(i, '')
+    message = message.replace(i.upper(), '')
+if (not message): print("EMPTY")
+else: print(message)
