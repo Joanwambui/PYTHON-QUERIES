@@ -166,4 +166,7 @@ print(type(num_int))  # Output: <class 'int'>
 456
 <class 'int'>
 
-
+#Dictionary logic
+d =  {'key1': 'value1'}
+val = d['key1']
+print(val)
