@@ -170,3 +170,18 @@ print(type(num_int))  # Output: <class 'int'>
 d =  {'key1': 'value1'}
 val = d['key1']
 print(val)
+
+
+#Lists
+a = [10, 20, 15]
+
+print(a[0]) # access first item
+a.append(11) # add item
+a.remove(20) # remove item
+
+print(a)
+
+# From a tuple
+a = list((1, 2, 3, 'apple', 4.5))  
+
+print(a)
