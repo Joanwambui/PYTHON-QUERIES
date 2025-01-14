@@ -214,3 +214,11 @@ matrix = [
 
 # Access element at row 2, column 3
 print(matrix[1][2])
+
+
+a = [5,12,34,2]
+largest = 0
+for i in a :
+    if i > largest:
+        largest = i
+print(largest)
