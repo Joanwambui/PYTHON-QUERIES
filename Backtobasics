@@ -185,3 +185,23 @@ print(a)
 a = list((1, 2, 3, 'apple', 4.5))  
 
 print(a)
+
+# Initialize an empty list
+a = []
+
+# Adding 10 to end of list
+a.append(10)  
+print("After append(10):", a)  
+
+# Inserting 5 at index 0
+a.insert(0, 5)
+print("After insert(0, 5):", a) 
+
+# Adding multiple elements  [15, 20, 25] at the end
+a.extend([15, 20, 25])  
+print("After extend([15, 20, 25]):", a)
+
+Output
+After append(10): [10]
+After insert(0, 5): [5, 10]
+After extend([15, 20, 25]): [5, 10, 15, 20, 25]
