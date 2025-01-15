@@ -247,3 +247,79 @@ if flag:
     print("Element exists in the list")
 else:
     print("Element does not exist")
+
+a = [10, 20, 30, 40, 50]
+
+# Check if 30 exists using any() function
+flag = any(x == 30 for x in a)
+
+if flag:
+    print("Element exists in the list")
+else:
+    print("Element does not exist")
+
+
+a = [10, 20, 30, 40, 50]
+
+# Check if 30 exists in the list using count()
+if a.count(30) > 0:
+    print("Element exists in the list")
+else:
+    print("Element does not exist")
+
+
+a = [10, 20, 30, 40, 50, 40, 60, 40, 70]
+
+# Find the index of 40 between index positions 4 and 8
+res = a.index(40, 4, 8)
+print(res)
+
+a = ['red', 'green', 'blue']
+
+try:
+    index = a.index('yellow')
+    print(a)
+except ValueError:
+    print("'yellow' is not in the list")
+
+a = [1, 2, 2, 3, 4, 4, 5]
+
+# Remove duplicates by converting to a set
+#though set does not mantain original order
+a = list(set(a))
+
+print(a)
+
+a = [1, 2, 2, 3, 4, 4, 5]
+
+# Create an empty list to store unique values
+res = []
+
+# Iterate through each value in the list 'a' to check duplicates
+for val in a:
+  
+    # Check if the value is not already in 'res'
+    if val not in res:
+      
+        # If not present, append it to 'res'
+        res.append(val)
+
+print(res)
+
+a = [1, 2, 2, 3, 4, 4, 5]
+
+# Create an empty list to store unique values
+res = []
+
+# Use list comprehension to append values to 'res'
+# if they are not already present
+[res.append(val) for val in a if val not in res]
+
+print(res)
+
+a = [1, 2, 2, 3, 4, 4, 5]
+
+# Remove duplicates using dictionary fromkeys()
+a = list(dict.fromkeys(a))
+
+print(a)
