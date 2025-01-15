@@ -339,3 +339,107 @@ a = [1, 2, 3, 4, 5]
 # a reversed version of the list
 rev = [a[i] for i in range(len(a) - 1, -1, -1)]
 print(rev)
+
+a = [10, 20, 30, 40]
+res = sum(a)
+print(res)
+
+a = [10, 20, 30, 40]
+
+# Initialize a variable to hold the sum
+res = 0
+
+# Loop through each value in the list
+for val in a:
+  
+    # Add the current value to the sum
+    res += val
+
+print(res)
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+
+# Merge the two lists and assign
+# the result to a new list
+c = a + b
+print(c)
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+
+# Add all elements from list 'b' to the end of list 'a'
+a.extend(b)
+
+print(a)
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+
+# Initialize an empty list to store the merged elements
+res = []
+
+# Append all elements from the first list
+for val in a:
+    res.append(val)
+
+# Append all elements from the second list
+for val in b:
+    res.append(val)
+
+print(res)
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+
+# Use the unpacking operator to merge the lists
+c = [*a, *b]
+
+print(c)
+
+# imports chain function from itertools module
+from itertools import chain
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+
+# Use itertools.chain to merge the lists in an efficient manner
+c = list(chain(a, b))
+
+print(c)
+
+# Initializing a list
+a = [5, 2, 9, 1, 5, 6]
+
+# Sorting the list in ascending order
+a.sort()
+print("Sorted list (ascending):", a)
+
+a.sort(reverse=True)
+print("Sorted list (descending):", a)
+
+# Initializing a list
+a = [5, 2, 9, 1, 5, 6]
+
+# Sorting the list in descending order
+sa = sorted(a)
+print("Sorted list (ascending):", sa)
+
+sa = sorted(a, reverse=True)
+print("Sorted list (descending):", sa)
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+def myFun(p):
+    return p.x
+
+l = [Point(1, 15), Point(10, 5), Point(3, 8)]
+l.sort(key=myFun)
+
+for i in l:
+    print(i.x, i.y)
+
+
