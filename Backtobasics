@@ -323,3 +323,19 @@ a = [1, 2, 2, 3, 4, 4, 5]
 a = list(dict.fromkeys(a))
 
 print(a)
+
+
+a = [1, 2, 3, 4, 5]
+
+# Create a new list that is a reversed list
+# of 'a' using slicing
+rev = a[::-1]
+
+print(rev)
+
+a = [1, 2, 3, 4, 5]
+
+# Use list comprehension to create
+# a reversed version of the list
+rev = [a[i] for i in range(len(a) - 1, -1, -1)]
+print(rev)
