@@ -6,3 +6,18 @@ output = [i * 2 if i % 2 == 0 else i * 3 for i in input_list]
 
 # Print the result
 print(output)
+
+
+# Input the number of cakes
+n = int(input())
+
+# Iterate over the number of cakes
+for _ in range(n):
+    # Read the taste and candle count for each cake
+    t, c = map(int, input().split())
+    
+    # Determine if it's a valid cake or not
+    if c > 14 or t > 101 or t < 1 or c < 1:
+        print("GLaDOS you filthy liar!")
+    else:
+        print("That's a cake!")
