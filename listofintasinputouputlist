@@ -1,0 +1,8 @@
+# Get the input list from the user
+input_list = list(map(int, input("Enter a list of integers separated by spaces: ").split()))
+
+# Process the list
+output = [i * 2 if i % 2 == 0 else i * 3 for i in input_list]
+
+# Print the result
+print(output)
