@@ -462,3 +462,8 @@ tup3 = (tup1, tup2)
 print(tup3)
 # Output
 ((0, 1, 2, 3), ('python', 'geek'))
+
+a = [1, "Hello", [3.14, "world"]]
+a.append(2)  # Add an integer to the end
+print(a)
+[1, 'Hello', [3.14, 'world'], 2]
