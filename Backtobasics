@@ -467,3 +467,59 @@ a = [1, "Hello", [3.14, "world"]]
 a.append(2)  # Add an integer to the end
 print(a)
 [1, 'Hello', [3.14, 'world'], 2]
+
+
+import numpy as np
+
+# Creating a NumPy array
+arr = np.array([1, 2, 3, 4])
+
+# Element-wise operations
+print(arr * 2)  
+
+# Multi-dimensional array
+arr2d = np.array([[1, 2], [3, 4]])
+print(arr2d * 2)
+[2 4 6 8]
+[[2 4]
+ [6 8]]
+
+import array as arr
+
+# creating array of integers
+a = arr.array('i', [1, 2, 3])
+
+# accessing First Araay
+print(a[0])
+
+# Adding element to array
+a.append(5)
+print(a)
+1
+array('i', [1, 2, 3, 5])
+
+import array as arr
+
+# Integer array example
+a = arr.array('i', [1, 2, 3])
+print("Integer Array before insertion:", *a)
+
+a.insert(1, 4)  # Insert 4 at index 1
+print("Integer Array after insertion:", *a)
+Integer Array before insertion: 1 2 3
+Integer Array after insertion: 1 4 2 3
+
+import array as arr
+a = arr.array('i', [1, 2, 3, 4, 5, 6])
+
+print(a[0])
+print(a[3])
+
+b = arr.array('d', [2.5, 3.2, 3.3])
+print(b[1])
+print(b[2])
+Output
+1
+4
+3.2
+3.3
