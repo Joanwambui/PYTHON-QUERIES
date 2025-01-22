@@ -1,0 +1,12 @@
+# Welcome message
+print("Welcome to the Rectangle Factory. We make rectangles here.")
+print("We will give you the size (height and width) and the material, and you will have to give us the desired rectangle.")
+
+# Input
+height = int(input())  # Get height of the rectangle
+width = int(input())   # Get width of the rectangle
+material = input()     # Get the material for the rectangle
+
+# Generate the rectangle
+for _ in range(height):  # Repeat for the number of rows (height)
+    print(material * width)  # Print a row of the rectangle with the exact width
