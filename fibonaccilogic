@@ -1,0 +1,30 @@
+A Fibonacci sequence of order n is an integer sequence in which each element is the sum of the previous n elements, except for the first n elements which are {0, 0, 0, ... 0, 1}.
+Meaning:
+If order is 3, then the sequence will be:
+0, 0, 1, 1, 2, 4, 7, 13, 24, ...
+
+Output the first numbers numbers of the Fibonacci sequence of order order.
+
+Example:
+If numbers is 7 and order is 4, output:
+0, 0, 0, 1, 1, 2, 4
+Input
+Line 1: An integer numbers for the amount of numbers
+Line 2: An integer order for the number of previous numbers you need to calculate the sum of.
+Output
+The first numbers of the different Fibonacci.
+Constraints
+3 ≤ numbers ≤ 15
+1 ≤ order ≤ 10
+Example
+Input
+7
+4
+Output
+0, 0, 0, 1, 1, 2, 4
+
+n = int(input())
+o = int(input())
+F=[0]*(o-1)+[1]
+while len(F)<n:F+=sum(F[-o:]),
+print(*F[:n],sep=', ')
