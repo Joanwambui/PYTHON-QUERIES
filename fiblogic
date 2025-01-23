@@ -1,0 +1,14 @@
+# Input the number of elements to output (m) and the order (n)
+numbers = int(input())  # First input: number of elements in the sequence
+order = int(input())    # Second input: order of the Fibonacci-like sequence
+
+# Initialize the sequence with `order` zeros followed by 1
+sequence = [0] * (order - 1) + [1]
+
+# Generate the sequence until we have `numbers` elements
+while len(sequence) < numbers:
+    # Add the sum of the last `order` elements to the sequence
+    sequence.append(sum(sequence[-order:]))
+
+# Output the first `numbers` elements as a comma-separated string
+print(", ".join(map(str, sequence)))
