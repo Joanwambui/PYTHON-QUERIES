@@ -11,3 +11,21 @@ final_score = total_strokes - total_par
 
 # Print result
 print(final_score)
+
+or 
+a = []
+for i in input().split():
+    a.append(int(i))
+b = []
+for i in input().split():
+    b.append(int(i))
+
+# Calculate total par and total strokes
+total_par = sum(a)
+total_strokes = sum(b)
+
+# Calculate final score
+final_score = total_strokes - total_par
+
+# Print the result
+print(final_score)
