@@ -1,0 +1,13 @@
+# Read input
+par_scores = list(map(int, input().split()))
+player_scores = list(map(int, input().split()))
+
+# Calculate total par and total strokes
+total_par = sum(par_scores)
+total_strokes = sum(player_scores)
+
+# Calculate final score
+final_score = total_strokes - total_par
+
+# Print result
+print(final_score)
