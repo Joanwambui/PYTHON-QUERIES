@@ -1,0 +1,21 @@
+def course_category():
+    frontend_courses = {"HTML", "CSS", "JavaScript", "Bootstrap", "Tailwind CSS", "React", "Vue.js", "Angular"}
+    backend_courses = {"Node.JS", "Express.js", "MySQL", "MongoDB"}
+
+    # Taking user input
+    major = input()
+
+    # Checking the category
+    if major in frontend_courses:
+        return "frontend"
+    elif major in backend_courses:
+        return "backend"
+    else:
+        return "false"
+
+# Call the function and print the result
+print(course_category())
+
+
+course = input(); print("frontend" 
+if course in {"HTML","CSS","JavaScript","Bootstrap","Tailwind CSS","React","Vue.js","Angular"} else "backend" if course in {"Node.JS","Express.js","MySQL","MongoDB"} else "false")
