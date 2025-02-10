@@ -1,0 +1,2 @@
+n = input()  # Takes a string input
+print(max(i for i in range(len(n) + 1) if '0' * i in n))
