@@ -1,0 +1,13 @@
+# Read the number of bus stops
+n = int(input())
+
+# Initialize the number of people on the bus (including yourself)
+nbPeople = 1  # You start on the bus
+
+# Loop through each bus stop
+for _ in range(n):
+    getIn, getOff = map(int, input().split())
+    nbPeople += getIn - getOff
+
+# Output the number of people on the bus at the end
+print(nbPeople)
