@@ -1,0 +1,15 @@
+# Input reading
+a = int(input())
+b = int(input())
+c = int(input())
+d = int(input())
+
+# Calculate maximum and minimum
+max_value = max(a, b, c, d)
+min_value = min(a, b, c, d)
+
+# Calculate the difference
+difference = max_value - min_value
+
+# Output the result
+print(difference)
