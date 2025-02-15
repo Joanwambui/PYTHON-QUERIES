@@ -1,0 +1,15 @@
+# Input reading
+s = input().strip()
+n = int(input().strip())
+
+# Split the string into words
+words = s.split()
+
+# Take the first n characters from each word
+message = ''.join([word[:n] for word in words])
+
+# Replace underscores with spaces and capitalize the message
+answer = message.replace('_', ' ').upper()
+
+# Output the result
+print(answer)
