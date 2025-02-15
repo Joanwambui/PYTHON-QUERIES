@@ -1,0 +1,20 @@
+def qwerty_to_dvorak(input_str):
+    qwerty = "1234567890-=qwertyuiop[]asdfghjkl;'zxcvbnm,./"
+    dvorak = "1234567890[]',.pyfgcrl/=aoeuidhtns-;qjkxbmwvz"
+    
+    # Create the mapping dictionary
+    mapping = {q: d for q, d in zip(qwerty, dvorak)}
+    
+    # Transform the input string
+    result = []
+    for char in input_str:
+        # Use the mapping if character exists, otherwise keep the character as is
+        result.append(mapping.get(char, char))
+    
+    # Join the result list into a string and return
+    return ''.join(result)
+
+# Example usage:
+input_str = input()
+print(qwerty_to_dvorak(input_str))
+ 
