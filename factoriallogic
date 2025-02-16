@@ -1,0 +1,15 @@
+#Halffactorial meaning only picking the values that are even
+# Input
+N = int(input())
+
+# Initialize result
+result = 1
+
+# Loop through numbers from 1 to N (inclusive)
+for i in range(1, N+1):
+    # Check if the number is odd
+    if i % 2 == 1:
+        result *= i
+
+# Output the result
+print(result)
