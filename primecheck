@@ -1,0 +1,15 @@
+# Read the input number
+n = int(input())
+
+# Calculate the square of the input number
+s = n ** 2
+
+# Check if n is a prime number
+# The all() function ensures n is not divisible by any number from 2 to √n
+if all(n % i for i in range(2, int(n ** 0.5) + 1)):
+    # If n is prime, print the square of n
+    print(s)
+else:
+    # If n is not prime, calculate the sum of the digits of the square
+    # Convert the square to a string, iterate over each digit, convert back to int and sum them
+    print(sum(int(d) for d in str(s)))
