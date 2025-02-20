@@ -1,0 +1,49 @@
+import re
+import sys
+
+# Read input
+P = input().strip()
+
+# Regex pattern explanation:
+# - `(?=.*\d)`: Ensure at least one digit.
+# - `(?=.*[A-Z])`: Ensure at least one uppercase letter.
+# - `(?=.*[a-z])`: Ensure at least one lowercase letter.
+# - `.{8,}`: Ensure at least 8 characters long.
+
+pattern = r'^(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}$'
+
+# Print "true" if it matches, otherwise "false"
+print("true" if re.match(pattern, P) else "false")
+
+---solution 2
+
+import sys
+
+# Read input
+P = input().strip()
+
+# Function to check password safety
+def is_safe_password(P):
+    if len(P) < 8:
+        return False
+
+    has_digit = False
+    has_lower = False
+    has_upper = False
+
+    for char in P:
+        if char.isdigit():
+            has_digit = True
+        elif char.islower():
+            has_lower = True
+        elif char.isupper():
+            has_upper = True
+
+        # If all conditions are met, no need to check further
+        if has_digit and has_lower and has_upper:
+            return True
+
+    return False
+
+# Output result
+print("true" if is_safe_password(P) else "false")
