@@ -1,0 +1,14 @@
+health = int(input())
+level = int(input())
+
+# Calculate the total damage
+damage = 200 + (level - 1) * 20  # Level 1 is 200, each higher level adds 20
+
+# Compute remaining health
+remaining_health = health - damage
+
+# Print result based on whether the tower is destroyed
+if remaining_health <= 0:
+    print(f"hehehehaw {remaining_health}")
+else:
+    print(f"rawr {remaining_health}")
