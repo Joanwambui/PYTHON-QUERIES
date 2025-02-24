@@ -1,0 +1,10 @@
+def findmaxmin(n):
+    maximum = max(n)  # Finds the maximum value in the list
+    minimum = min(n)  # Finds the minimum value in the list
+    return maximum, minimum  # Returns both values as a tuple
+
+# Example usage
+n = [5, 9, 7, 62]
+max_val, min_val = findmaxmin(n)
+print("Maximum:", max_val)
+print("Minimum:", min_val)
