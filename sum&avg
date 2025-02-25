@@ -1,0 +1,10 @@
+#given a list of numbers find the sum and average
+n= [9,6,7,2]
+sum= 0
+average = 0
+for i in n:
+    sum+=i
+print(sum)
+for i in n:
+    average = sum/len(n)
+print(average)
