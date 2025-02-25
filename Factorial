@@ -11,3 +11,4 @@ if n <= k:
 else:
     # When n > k, it's not possible to select n items from k
     print(0)
+
