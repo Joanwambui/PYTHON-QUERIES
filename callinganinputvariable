@@ -1,0 +1,18 @@
+#create variables for storing a person's name age and average test score
+age = input()
+name =input()
+average_score = input()
+print(f"Name: {name}")
+print(f"Age: {age}")
+print(f"Average Test Score: {average_score}")
+
+
+#compared to calling a stored variable that is not dynamic
+name = "John Doe"      # String variable to store the person's name
+age = 25              # Integer variable to store the person's age
+average_score = 87.5  # Float variable to store the person's average test score
+
+# Print the values
+print("Name:", name)
+print("Age:", age)
+print("Average Test Score:", average_score)
