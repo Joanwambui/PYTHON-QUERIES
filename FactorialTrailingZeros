@@ -15,7 +15,7 @@ def trailing_zeroes(n):
 
   return zero_count
 
----Second solution
+----Second solution
 def trailing_zeroes(n):
   if n < 5:
     return 0
