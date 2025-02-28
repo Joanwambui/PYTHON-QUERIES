@@ -6,6 +6,7 @@ x_2, y_2 = [int(i) for i in input().split()]
 x_mid = (x_1 + x_2) / 2
 y_mid = (y_1 + y_2) / 2
 
+
 # Convert to integer if the result is a whole number
 if x_mid.is_integer():
     x_mid = int(x_mid)
