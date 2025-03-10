@@ -1,0 +1,10 @@
+def format_phone_number(number):
+    return f"({number[:3]}) {number[3:6]}-{number[6:]}"
+    
+# Read input
+number = input().strip()
+
+# Print formatted phone number
+print(format_phone_number(number))
+
+#We  use f to solve such cases
