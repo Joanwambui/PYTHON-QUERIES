@@ -1,0 +1,14 @@
+# Read inputs
+a = float(input().strip())  # First term
+b = float(input().strip())  # Second term
+
+# Compute common ratio
+r = b / a
+
+# Check if the series converges
+if r >= 1:
+    print("diverges")
+else:
+    # Compute the sum of the series
+    sum_series = a / (1 - r)
+    print(f"{sum_series:.1f}")
