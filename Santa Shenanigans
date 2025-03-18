@@ -1,0 +1,34 @@
+Santa wants to deliver Christmas presents to all the children in the city of Rotten Pepper. Help him to find out how much time it will take him.
+
+The biggest issue that he has is his big belly. If the width of the chimney is 80 centimetres or more, he needs only one minute to come down the chimney. But if the width of the chimney is less than 80 centimetres, Santa will get stuck and it will take him twice as long (two minutes).
+
+Santa is also very picky. He only eats chocolate chip cookies(chocolate_chip_cookies) TOGETHER with hot milk(hot_milk). Nothing else. If he finds this combination by the fireplace it will make him very happy but cause another one minute delay.
+
+His journey starts at destination one and finishes at his own house.
+
+# Read the number of destinations
+H = int(input())
+
+total_time = 0
+
+for _ in range(H):
+    # Read input values
+    W, T, F, D = input().split()
+    W = int(W)
+    T = int(T)
+
+    # Add travel time
+    total_time += T
+
+    # Add chimney time
+    if W < 80:
+        total_time += 2  # Takes 2 minutes if stuck
+    else:
+        total_time += 1  # Takes 1 minute normally
+
+    # Add extra time if Santa finds his favorite snack
+    if F == "chocolate_chip_cookies" and D == "hot_milk":
+        total_time += 1
+
+# Print the total time
+print(total_time)
