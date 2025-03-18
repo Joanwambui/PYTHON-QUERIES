@@ -1,0 +1,17 @@
+m = int(input())
+n = int(input())
+
+total = m + n
+result = total if total <= 7 else total - 7  # Ensure max value is 7
+
+print(result)
+#This ensures the maximum possible result is always 7
+
+import sys
+import math
+m = int(input())
+n = int(input())
+d = m+n
+if d>7:
+    d=d-7
+print(d)
