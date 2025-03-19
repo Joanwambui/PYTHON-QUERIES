@@ -1,0 +1,10 @@
+import sys
+import math
+
+line = input()
+n = int(input())
+
+if line == 's':
+    print(float(n * n))  # Ensure float output
+elif line == 'sr':
+    print(f"{math.sqrt(n):.1f}")  # Format to 1 decimal place
