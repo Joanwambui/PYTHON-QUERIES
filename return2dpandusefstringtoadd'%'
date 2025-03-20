@@ -1,0 +1,5 @@
+i,u=input,int
+x,y=u(i()),u(i())
+i(f"{abs((x-y)/y):.2%}")
+
+print('%.2f'%round(abs(int(input())/int(input())-1)*100,2)+'%')
