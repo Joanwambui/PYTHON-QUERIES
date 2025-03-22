@@ -1,0 +1,15 @@
+WITH cte AS (
+    SELECT sd.supplier_id, sd.component_count, s.supplier_name, sd.delivery_date
+    FROM supplier_deliveries sd
+    INNER JOIN suppliers s
+    ON sd.supplier_id = s.supplier_id
+    WHERE strftime('%Y-%m', sd.delivery_date) = '2024-10'
+),
+cte2 AS (
+    SELECT supplier_name, SUM(component_count) AS Total_components
+    FROM cte
+    GROUP BY supplier_name
+    ORDER BY Total_components DESC
+    LIMIT 5
+)
+SELECT supplier_name FROM cte2;
