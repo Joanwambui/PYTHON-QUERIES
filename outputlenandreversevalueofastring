@@ -13,3 +13,6 @@ cnt = len(x)
 reverse = x[::-1]
 print(f"{cnt} {reverse}")
 
+
+i = input()
+print(len(i), i[::-1])
