@@ -1,0 +1,15 @@
+import sys
+import math
+
+def main():
+    # Read the input integer N
+    n = int(sys.stdin.readline().strip())
+    
+    # Compute the Nth row of Pascal's Triangle
+    row = [math.comb(n, k) for k in range(n + 1)]
+    
+    # Print the row with space-separated values
+    print(" ".join(map(str, row)))
+
+if __name__ == "__main__":
+    main()
