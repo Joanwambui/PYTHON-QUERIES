@@ -1,0 +1,15 @@
+import sys
+
+# Read input values
+f = int(input())  # Starting fuel in liters
+d = int(input())  # Distance to travel in meters
+r = int(input())  # Fuel burn rate (liters per meter)
+
+# Calculate the fuel used
+fuelused = d * r
+
+# Check if the imposter has enough fuel
+if fuelused > f:
+    print("not enough fuel")
+else:
+    print(f - fuelused)  # Remaining fuel after travel
