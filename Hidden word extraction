@@ -1,0 +1,12 @@
+key = input().strip()
+message = input().strip()
+
+words = message.split()
+hidden_word = ""
+
+for i, digit in enumerate(key):
+    pos = int(digit)
+    if pos != 0 and pos <= len(words[i]):
+        hidden_word += words[i][pos - 1]
+
+print(hidden_word)
