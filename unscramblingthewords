@@ -1,0 +1,8 @@
+s = input()
+first_half = s[::2]
+second_half = s[-2::-2] if len(s) % 2 else s[::-2]
+print(first_half + second_half)
+
+Your given a scrambled sentence. You must output an unscrambled version of the same sentence using these rules:
+- First, print one in every two characters.
+- Then print every other character starting from the end, going backwards. Make sure you handle strings of both even and odd lengths.
