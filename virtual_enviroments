@@ -1,0 +1,21 @@
+Activating/Creating virtual environments
+
+Create a virtual environment by:
+To create a virtual environment, navigate to your project
+ directory in a command prompt or terminal and run the
+ following command:
+ ```bash
+ python -m venv venv_name
+ ```
+ Substitute `venv_name` with the preferred name for your
+ virtual environment. Activate the virtual environment by
+ executing the suitable command for your operating system:- On Windows:
+ ```bash
+ venv_name\Scripts\activate
+ ```- On macOS/Linux:
+ ```bash
+ source venv_name/bin/activate
+ ```
+ Once activated, you'll see the virtual environment name in
+ your command prompt or terminal, indicating that you're
+ working within the virtual environment
