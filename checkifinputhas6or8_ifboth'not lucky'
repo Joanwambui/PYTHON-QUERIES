@@ -1,0 +1,11 @@
+number = input()  # Read input as a string to easily check digits
+
+has_6 = '6' in number
+has_8 = '8' in number
+
+if has_6 and has_8:
+    print("Not Lucky")
+elif has_6 or has_8:
+    print("Lucky")
+else:
+    print("Not Lucky")
