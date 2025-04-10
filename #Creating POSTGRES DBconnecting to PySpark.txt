@@ -1,6 +1,7 @@
 #Creating POSTGRES DB
 CREATE DATABASE etl_pipeline;
 
+
 #Connecting to the database
 \c etl_pipeline;
 etl_pipeline= #CREATE TABLE movies (
