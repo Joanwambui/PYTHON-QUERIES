@@ -1,0 +1,8 @@
+ def insert_element(lst, index, element):
+ lst.insert(index, element)
+ return lst
+ numbers = [1, 2, 3, 5]
+ new_element = 4
+ index = 3
+ print("Updated list:", insert_element(numbers, index,
+ new_element))
