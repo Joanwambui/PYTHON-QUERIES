@@ -1,0 +1,9 @@
+l = input().strip()
+
+if l == 'Z' or l == 'z':
+    print("Here's the end")
+else:
+    start = ord(l) + 1
+    end = ord('Z') if l.isupper() else ord('z')
+    for code in range(start, end + 1):
+        print(chr(code))
