@@ -1,6 +1,7 @@
 # Read the number of bus stops
 n = int(input())
 
+
 # Initialize the number of people on the bus (including yourself)
 nbPeople = 1  # You start on the bus
 
