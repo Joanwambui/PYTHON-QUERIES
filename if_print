@@ -1,0 +1,14 @@
+b = int(input())
+p = int(input())
+r = int(input())
+t = int(input())
+
+
+total = p * r * t
+
+if b > total:
+    print('Enough bread')
+elif b == total:
+    print('Just enough bread')
+else:
+    print('Not enough bread')
