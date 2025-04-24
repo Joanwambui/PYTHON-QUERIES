@@ -1,0 +1,8 @@
+weather = input()  # Read the 7-character input
+
+rainfall = 0
+for day in weather:
+    if day == 'R':
+        rainfall += 4  # Add 4mm for each rainy day
+
+print(rainfall)  # Output total rainfall
