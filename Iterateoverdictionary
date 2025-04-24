@@ -1,0 +1,5 @@
+ def iterate_dictionary(dictionary):
+ for key, value in dictionary.items():
+ print(key, ":", value)
+ ages_dict = {'Alice': 25, 'Bob': 30, 'Charlie': 35}
+ iterate_dictionary(ages_dict
