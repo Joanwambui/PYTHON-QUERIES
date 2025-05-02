@@ -1,0 +1,12 @@
+import sys
+
+awkwardness_level = int(input().strip())
+
+if awkwardness_level >= 1 and awkwardness_level <= 3:
+    print("I'll need to wake up early tomorrow.")
+elif awkwardness_level >= 4 and awkwardness_level <= 6:
+    print("I'm feeling unwell, I need to leave.")
+elif awkwardness_level >= 7 and awkwardness_level <= 9:
+    print("I forgot I have an important meeting soon.")
+else:
+    print("Sorry, but I think this isn't working out.")
