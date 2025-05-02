@@ -1,0 +1,16 @@
+# read the one line, strip any newline/space
+line = input().strip()
+
+# split on comma, strip each piece, convert to int
+parts = [p.strip() for p in line.split(',')]
+n        = int(parts[0])    # the “N” value (1 in your example)
+second_age = int(parts[1])  # the second number (25 in your example)
+
+print(second_age)
+
+
+OR
+
+s = input().strip().strip('()')
+_, second_age = map(int, s.split(','))
+print(second_age)
