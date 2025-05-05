@@ -1,0 +1,15 @@
+input_str = input()
+output_str = ""
+
+for ch in input_str:
+    if ch.islower():
+        output_str += ch.upper()
+    elif ch.isupper():
+        output_str += ch.lower()
+    else:
+        output_str += ch
+
+print(output_str)
+
+
+input_str was characters- using split returns a list which is not the best for this usecase
