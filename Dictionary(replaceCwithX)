@@ -1,0 +1,16 @@
+# Read the DNA string
+dna = input().strip()
+
+# Mapping of each base to its complement
+complement = {
+    'A': 'T',
+    'T': 'A',
+    'C': 'G',
+    'G': 'C'
+}
+
+# Build the complementary sequence
+result = ''.join(complement[base] for base in dna)
+
+# Output the result
+print(result)
