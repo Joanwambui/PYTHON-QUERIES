@@ -6,3 +6,13 @@ for i in range(a, 0, -1):
 
 for x in range(b, 0, -1):
     print(x)
+
+
+a = int(input())
+b = int(input())
+
+i_values = [str(i) for i in range(a, 0, -1)]
+x_values = [str(x) for x in range(1, b + 1)]
+
+result = ''.join(i_values + x_values)
+print(result)
