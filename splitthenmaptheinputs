@@ -1,0 +1,6 @@
+t, c, r = map(int, input().split())
+
+if t * r >= c:
+    print("yes")
+else:
+    print("no")
