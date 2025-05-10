@@ -1,0 +1,29 @@
+chr_1, chr_2, chr_3 = input().split()
+
+print(chr_1 * 5)
+print(chr_1 + chr_2 * 3 + chr_1)
+print(chr_1 + chr_2 + chr_3 + chr_2 + chr_1)
+print(chr_1 + chr_2 * 3 + chr_1)
+print(chr_1 * 5)
+
+
+--------
+q w e
+qqqqq
+qwwwq
+qwewq
+qwwwq
+qqqqq
+
+inp = input().strip()
+
+if ' ' in inp:
+    chr_1, chr_2, chr_3 = inp.split()
+else:
+    chr_1, chr_2, chr_3 = inp[0], inp[1], inp[2]
+
+print(chr_1 * 5)
+print(chr_1 + chr_2 * 3 + chr_1)
+print(chr_1 + chr_2 + chr_3 + chr_2 + chr_1)
+print(chr_1 + chr_2 * 3 + chr_1)
+print(chr_1 * 5)
