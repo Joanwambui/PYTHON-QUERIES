@@ -21,7 +21,14 @@ Welcome, Blake
 You are part of Software engineering
 Welcome, Ellis
 You are part of Software engineering
+-----------------
+def greeting(name):
+    return "Welcome, " + name
 
+# Now greeting(...) gives you back a string you can print or concatenate:
+print(greeting("Kay"))                       # prints: Welcome, Kay
+print(greeting("Cameron") + " How are you?") # prints: Welcome, Cameron How are you?
+#when you have a return statement you can plug in the variale int the function in your print stattement
 
 
 def find_total_days(years, months, days):
