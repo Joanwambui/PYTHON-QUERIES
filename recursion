@@ -8,7 +8,7 @@ def factorial(n):
         return n * factorial(n - 1)
 
 print(factorial(4))
-
+-----------------------------------------------------------------------------
 
 def sum_positive_numbers(n):
     if n < 1:
