@@ -1,0 +1,4 @@
+# Read a line of input
+s = input()
+# Remove any character that is not a letter or space, then print the result
+print(''.join(ch for ch in s if ch.isalpha() or ch.isspace()))
