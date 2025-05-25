@@ -1,0 +1,17 @@
+git --version
+mkdir my-git-repo #initialize a new repository
+cd my-git-repo #navigate to the directory created
+git init  #initialize new repo
+git config --global user.name "Name"  #Configue git
+git config --global user.email "user@example.com"  #email to associate with your git commands
+nano README  #create a README
+This is my first repository.  #Type within the readme file
+git status  #Check status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	
+git commit
