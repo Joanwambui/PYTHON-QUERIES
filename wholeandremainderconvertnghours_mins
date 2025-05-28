@@ -1,0 +1,9 @@
+import sys
+import math
+
+m = int(input())
+
+hours = m // 60
+minutes = m % 60
+
+print(f"{hours}h {minutes}m")
