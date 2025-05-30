@@ -1,0 +1,25 @@
+import sys
+
+# 1) Read inputs
+q = input().rstrip('\n')
+w = input().rstrip('\n')
+
+# 2) Prepare the list of replacement words
+words = w.split(',')
+
+# 3) Figure out which placeholder to replace
+if '?' in q:
+    placeholder = '?'
+elif '#' in q:
+    placeholder = '#'
+else:
+    # no placeholder found—just print and exit
+    print(q)
+    sys.exit()
+
+# 4) Replace each placeholder occurrence in order
+for word in words:
+    q = q.replace(placeholder, word, 1)
+
+# 5) Output the final sentence
+print(q)
