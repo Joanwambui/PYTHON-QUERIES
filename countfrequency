@@ -1,0 +1,22 @@
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+
+words = input()
+
+from collections import Counter
+
+def most_used_letter_count(words: str) -> int:
+    # Keep only alphabetic characters (ignore spaces, punctuation, etc.)
+    letters = [c.lower() for c in words if c.isalpha()]
+    if not letters:
+        return 0
+    # Count frequencies
+    freq = Counter(letters)
+    # Return the highest count
+    return freq.most_common(1)[0][1]
+
+
+print(most_used_letter_count(words))  # → 6
