@@ -1,0 +1,17 @@
+import sys
+import math
+import re
+
+word = input().lower()
+sentence = input().lower()
+
+# Remove punctuation
+sentence = re.sub(r'[^\w\s]', '', sentence)
+
+# Split sentence into words
+words = sentence.split()
+
+if word in words:
+    print("exists")
+else:
+    print("absent")
