@@ -1,0 +1,20 @@
+# Read input
+a, b = map(float, input().split())
+c, d = map(float, input().split())
+
+# Calculate determinant
+det = a * d - b * c
+
+# Check if the matrix is invertible
+if det == 0:
+    print("IMPOSSIBLE")
+else:
+    # Compute inverse elements
+    inv11 = d / det
+    inv12 = -b / det
+    inv21 = -c / det
+    inv22 = a / det
+
+    # Print with 3 decimal places
+    print(f"{inv11:.3f} {inv12:.3f}")
+    print(f"{inv21:.3f} {inv22:.3f}")
