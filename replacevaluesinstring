@@ -1,0 +1,15 @@
+ip = input()
+
+# Define the set of allowed characters
+allowed = set("abcdefghijklmnopqrstuvwxyz"
+              "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+              "><=/+- ")
+
+# Filter input
+out = "".join(c for c in ip if c in allowed)
+
+# Print result
+if out:
+    print(f"print({out})")
+else:
+    print("None")
