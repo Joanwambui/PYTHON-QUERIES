@@ -1,0 +1,5 @@
+n = int(input())
+for _ in range(n):
+    line = input().lower()
+    letters = [c for c in line if 'a' <= c <= 'z']
+    print(Counter(letters).most_common(1)[0][0])
