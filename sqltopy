@@ -1,0 +1,9 @@
+# Assuming 'df' is your DataFrame created earlier
+average_prices_by_category = df.groupby('category')['price'].mean()
+
+# Display the result
+print(average_prices_by_category)
+
+SELECT AVG(price), category
+FROM Listings
+GROUP BY category
