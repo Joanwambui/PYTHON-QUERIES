@@ -24,3 +24,18 @@ FROM Listings
 GROUP BY city
 ORDER BY AVG(price) ASC
 LIMIT 1
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+SELECT
+  department_id,
+  FLOOR(AVG(satisfaction_score)) AS avg_satisfaction_score
+FROM employee_satisfaction
+GROUP BY department_id;
+
+
+# 1. Calculate the mean satisfaction score per department
+avg_scores = df.groupby('department_id')['satisfaction_score'].mean()
+
+# 2. Round down to the nearest whole number
+avg_scores = np.floor(avg_scores).astype(int)
