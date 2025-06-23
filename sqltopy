@@ -7,3 +7,20 @@ print(average_prices_by_category)
 SELECT AVG(price), category
 FROM Listings
 GROUP BY category
+
+---------------------------------------------------------------------------------------------------------------------------------
+average_prices_by_city = df.groupby('city')['price'].mean()
+
+# 3. Find the city with the lowest average price
+city_with_lowest_avg_price = average_prices_by_city.idxmin()
+lowest_avg_price_value     = average_prices_by_city.min()
+
+# 4. Print the results in table form
+print("city\tAVG(price)")
+print(f"{city_with_lowest_avg_price}\t{int(lowest_avg_price_value)}")
+
+ SELECT city, AVG(price)
+FROM Listings
+GROUP BY city
+ORDER BY AVG(price) ASC
+LIMIT 1
