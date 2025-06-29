@@ -39,3 +39,37 @@ avg_scores = df.groupby('department_id')['satisfaction_score'].mean()
 
 # 2. Round down to the nearest whole number
 avg_scores = np.floor(avg_scores).astype(int)
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+import pandas as pd
+import numpy as np
+
+# Example: load from CSV (or replace with your own data source)
+# df = pd.read_csv("employee_satisfaction.csv")
+
+# Ensure your DataFrame has the columns: 
+#   - satisfaction_score (numeric)
+#   - job_category_id
+#   - department_id
+
+# 1. Group by the two IDs and compute the average
+grouped = (
+    df
+    .groupby(['job_category_id', 'department_id'], as_index=False)
+    .agg(avg_score=('satisfaction_score', 'mean'))
+)
+
+# 2. Apply ceiling and floor
+grouped['Ceil_Avg_Satisfaction']  = np.ceil(grouped['avg_score'])
+grouped['Floor_Avg_Satisfaction'] = np.floor(grouped['avg_score'])
+
+# 3. (Optional) Reorder or drop the intermediate avg_score column
+result = grouped[
+    ['Ceil_Avg_Satisfaction', 'Floor_Avg_Satisfaction', 
+     'job_category_id', 'department_id']
+]
+
+print(result)
+
