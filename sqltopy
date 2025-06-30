@@ -73,3 +73,21 @@ result = grouped[
 
 print(result)
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT campaign_id, SUM(conversions)
+FROM ad_campaigns
+WHERE start_date BETWEEN '01/04/2024' AND '30/04/2024'
+GROUP BY campaign_id
+ORDER BY SUM(conversions) DESC
+LIMIT 5
+
+top5 = (
+    df[df["start_date"].between("2024-04-01", "2024-04-30")]
+    .groupby("campaign_id", as_index=False)["conversions"]
+    .sum()
+    .rename(columns={"conversions": "total_conversions"})
+    .sort_values("total_conversions", ascending=False)
+    .head(5)
+)
+
+print(top5)
