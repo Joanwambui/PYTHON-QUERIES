@@ -138,3 +138,30 @@ unique_ad_types = (
 )
 
 print(unique_ad_types)
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT campaign_name , start_date, revenue
+FROM ad_campaigns
+WHERE start_date >= '2024-06-01'
+AND start_date < '2024-07-01'
+AND revenue = 0
+
+
+import pandas as pd
+
+# ensure your dates are datetimes
+df["start_date"] = pd.to_datetime(df["start_date"])
+
+# filter for June 2024 and zero revenue
+revenue_zero = (
+    df.loc[
+        (df["start_date"] >= "2024-06-01") &
+        (df["start_date"] <  "2024-07-01") &
+        (df["revenue"] == 0),
+        ["campaign_name", "start_date", "revenue"]
+    ]
+    .reset_index(drop=True)
+)
+
+print(revenue_zero)
