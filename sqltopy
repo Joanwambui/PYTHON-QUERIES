@@ -91,3 +91,50 @@ top5 = (
 )
 
 print(top5)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT DISTINCT ad_type
+FROM ad_campaigns
+WHERE conversions > 100
+  AND start_date >= '2024-05-01'
+  AND start_date <  '2024-06-01';
+
+
+import pandas as pd
+
+# 1. Load the CSV and parse dates
+df = pd.read_csv("ad_campaigns.csv", parse_dates=["start_date"])
+
+# 2. Build a mask for May 2024 and conversions > 100
+mask = (
+    (df["start_date"] >= "2024-05-01") &
+    (df["start_date"] <  "2024-06-01") &
+    (df["conversions"] > 100)
+)
+
+# 3. Pull out the ad_type column, drop duplicates, and reset the index
+result = (
+    df.loc[mask, ["ad_type"]]
+      .drop_duplicates()
+      .reset_index(drop=True)
+)
+
+# 4. Display
+print(result)
+
+
+import pandas as pd
+
+df = pd.read_csv("ad_campaigns.csv", parse_dates=["start_date"])
+
+unique_ad_types = (
+    df[
+        df["start_date"].between("2024-05-01", "2024-05-31") &
+        (df["conversions"] > 100)
+    ]
+    .loc[:, ["ad_type"]]
+    .drop_duplicates()
+    .reset_index(drop=True)
+)
+
+print(unique_ad_types)
