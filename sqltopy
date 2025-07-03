@@ -167,3 +167,34 @@ revenue_zero = (
 )
 
 print(revenue_zero)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT COUNT (DISTINCT artist_id)
+FROM fct_artist_recommendations
+WHERE recommendation_date >= '01/04/2024' AND recommendation_date < '01/05/2024'
+
+count = (
+    df.loc[
+        (df["recommendation_date"] >= "2024-04-01") &
+        (df["recommendation_date"] <  "2024-05-01"),
+        "artist_id"
+    ]
+    .nunique())
+print(count)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT COUNT(recommendation_id)
+FROM fct_artist_recommendations
+WHERE recommendation_date >= '01/05/2024' AND recommendation_date < '01/06/2024'
+AND is_new_artist = 1
+
+
+count = (
+df.loc[
+(df["recommendation_date"] >= "2024-05-01") &
+(df["recommendation_date"] < "2024-06-01") &
+(df["is_new_artist"] == 1), "recommendation_id"].count())
+print(count)
+
+
+
