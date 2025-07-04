@@ -197,4 +197,45 @@ df.loc[
 print(count)
 
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT 
+  strftime('%m', recommendation_date) AS month,
+  COUNT(DISTINCT artist_id) AS new_artist_count
+FROM fct_artist_recommendations
+WHERE 
+  is_new_artist = 1
+  AND recommendation_date >= '2024-04-01'
+  AND recommendation_date < '2024-07-01'
+GROUP BY month
+ORDER BY month;
+
+
+
+import pandas as pd
+
+# Ensure recommendation_date is in datetime format
+df["recommendation_date"] = pd.to_datetime(df["recommendation_date"])
+
+# Filter for Q2 2024 and only new artists
+filtered = df[
+    (df["recommendation_date"] >= "2024-04-01") &
+    (df["recommendation_date"] < "2024-07-01") &
+    (df["is_new_artist"] == 1)
+].copy()
+
+# Extract month for grouping
+filtered["month"] = filtered["recommendation_date"].dt.strftime("%m")
+
+# Count distinct artist_id per month
+result = (
+    filtered.groupby("month", as_index=False)["artist_id"]
+    .nunique()
+    .rename(columns={"artist_id": "new_artist_count"})
+    .sort_values("month")
+)
+
+print(result)
+
+
+
 
