@@ -284,3 +284,11 @@ filtered = df[
 
 result = filtered[["inquiry_id", "response_time_hours"]]
 print(result)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT COUNT(label_id), user_id
+FROM email_labels
+GROUP BY user_id
+
+result = df.groupby("user_id")["label_id"].count()
+print(result)
