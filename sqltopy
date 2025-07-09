@@ -323,4 +323,44 @@ filtered_totals = totals[totals["totalcount"] > 5]
 
 print(filtered_totals)
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT
+  el.label_id,
+  COUNT(e.email_id) AS email_count
+FROM email_labels AS el
+LEFT JOIN emails AS e
+  ON el.label_id = e.label_id
+WHERE el.created_date >= '2024-10-01'
+  AND el.created_date <  '2024-11-01'
+GROUP BY el.label_id
+ORDER BY el.label_id;
+
+import pandas as pd
+
+# 1. Make sure your two DataFrames exist:
+#    df_labels: columns → ['label_id', 'user_id', 'created_date', …]
+#    df_emails: columns → ['email_id', 'label_id', …]
+
+# 2. Convert created_date to datetime
+df_labels['created_date'] = pd.to_datetime(df_labels['created_date'])
+
+# 3. Filter labels created in October 2024
+oct_labels = df_labels[
+    (df_labels['created_date'] >= '2024-10-01') &
+    (df_labels['created_date'] <  '2024-11-01')
+].copy()
+
+# 4. LEFT-join emails onto those labels
+merged = oct_labels.merge(df_emails, on='label_id', how='left')
+
+# 5. Group and count non-null email_id per label
+email_counts = (
+    merged
+    .groupby('label_id')['email_id']
+    .count()                        # only counts non-null entries
+    .reset_index(name='email_count')
+    .sort_values('label_id')
+)
+
+print(email_counts)
 
