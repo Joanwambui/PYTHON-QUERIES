@@ -292,3 +292,35 @@ GROUP BY user_id
 
 result = df.groupby("user_id")["label_id"].count()
 print(result)
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT
+  label_id,
+  COUNT(email_id) AS totalcount
+FROM emails e
+GROUP BY label_id
+HAVING COUNT(email_id) > 5;
+
+# step 1: get total counts per label
+totals = (
+    df
+    .groupby("label_id")["email_id"]
+    .count()
+    .reset_index(name="totalcount")
+)
+
+	label_id	totalcount
+1	B	6
+2	C	8
+4	E	10
+
+
+
+# step 2: keep only those above 5
+filtered_totals = totals[totals["totalcount"] > 5]
+
+print(filtered_totals)
+
+
