@@ -391,3 +391,21 @@ unique_premium_customers = filtered['customer_id'].nunique()
 
 print(unique_premium_customers)
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+WITH tier_counts AS (
+  SELECT
+    service_tier_code,
+    COUNT(*) AS transaction_count
+  FROM fct_transactions
+  WHERE 
+    transaction_date >= '2024-05-01'
+    AND transaction_date  < '2024-06-01'
+  GROUP BY service_tier_code
+)
+SELECT
+  service_tier_code,
+  transaction_count,
+  RANK() OVER (ORDER BY transaction_count DESC) AS usage_rank
+FROM tier_counts
+ORDER BY usage_rank;
+
