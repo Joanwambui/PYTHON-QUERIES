@@ -364,3 +364,30 @@ email_counts = (
 
 print(email_counts)
 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT 
+  COUNT(DISTINCT customer_id) AS unique_premium_customers
+FROM fct_transactions
+WHERE 
+  service_tier_code LIKE 'PREM%' 
+  AND transaction_date >= '2024-04-01'
+  AND transaction_date  < '2024-05-01';
+
+import pandas as pd
+
+# ensure your DataFrame df is loaded and has the right dtypes
+df['transaction_date'] = pd.to_datetime(df['transaction_date'])
+
+# filter for April 2024 and service tiers starting with "PREM"
+filtered = df[
+    (df['transaction_date'] >= '2024-04-01') &
+    (df['transaction_date'] <  '2024-05-01') &
+    (df['service_tier_code'].str.startswith('PREM'))
+]
+
+# count distinct customer_id
+unique_premium_customers = filtered['customer_id'].nunique()
+
+print(unique_premium_customers)
+
