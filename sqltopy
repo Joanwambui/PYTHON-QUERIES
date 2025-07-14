@@ -409,3 +409,18 @@ SELECT
 FROM tier_counts
 ORDER BY usage_rank;
 
+
+
+df['transaction_date'] = pd.to_datetime(df['transaction_date'])
+
+tier_counts = (
+    df[(df['transaction_date'] >= '2024-05-01') & (df['transaction_date'] < '2024-06-01')]
+    .groupby('service_tier_code')
+    .size()
+    .reset_index(name='transaction_count')
+    .assign(usage_rank=lambda x: x['transaction_count'].rank(method='dense', ascending=False).astype(int))
+    .sort_values('usage_rank')
+)
+
+print(tier_counts)
+
