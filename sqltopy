@@ -424,3 +424,37 @@ tier_counts = (
 
 print(tier_counts)
 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT
+  service_tier_code,
+  COUNT(transaction_id) AS transactions
+FROM fct_transactions
+WHERE transaction_date >= '2024-06-01'
+  AND transaction_date < '2024-07-01'
+GROUP BY service_tier_code
+ORDER BY transactions DESC
+LIMIT 3;
+
+
+import pandas as pd
+
+# Ensure 'transaction_date' is datetime
+df['transaction_date'] = pd.to_datetime(df['transaction_date'])
+
+# Filter transactions for June 2024
+filtered = df[
+    (df['transaction_date'] >= '2024-06-01') &
+    (df['transaction_date'] <  '2024-07-01') 
+]
+
+# Group by service_tier_code, count transaction_id, sort descending, and get top 3
+result = (
+    filtered.groupby('service_tier_code')['transaction_id']
+    .count()
+    .reset_index(name='transactions')
+    .sort_values('transactions', ascending=False)
+    .head(3)
+)
+
+print(result)
