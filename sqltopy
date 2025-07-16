@@ -458,3 +458,34 @@ result = (
 )
 
 print(result)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+SELECT key_message, brand_score
+FROM brand_score_metrics
+WHERE metric_date >= '2024-10-01' AND 
+metric_date < '2025-01-01'
+
+
+filtered = df[
+    (df['metric_date'] >= '2024-10-01') & 
+    (df['metric_date'] < '2025-01-01')
+]
+
+result = filtered[['key_message', 'brand_score']]
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT key_message, brand_score
+FROM brand_score_metrics
+WHERE segment_id = 2 AND 
+metric_date >= '2024-10-01' AND 
+metric_date < '2025-01-01' AND
+brand_score >= 90
+
+
+filtered = df[
+    (df['metric_date'] >= '2024-10-01') & 
+    (df['metric_date'] < '2025-01-01') &
+(df['segment_id'] == 2) & (df['brand_score'] >=90)
+]
+
+result = filtered[['key_message', 'brand_score']]
