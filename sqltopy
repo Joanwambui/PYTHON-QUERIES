@@ -489,3 +489,27 @@ filtered = df[
 ]
 
 result = filtered[['key_message', 'brand_score']]
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+#Most recent date should be descending
+SELECT key_message,brand_score
+FROM brand_score_metrics
+WHERE segment_id= 3 AND brand_score > 80
+ORDER BY metric_date DESC
+LIMIT 5
+
+
+filtered = (df['segment_id'] == 3 ) & (df['brand_score'] > 80) 
+result = filtered [['key_message', 'brand_score']].sort_values('metric_date', ascending=False).head(5) 
+
+
+result = (
+    df[(df['segment_id'] == 3) & (df['brand_score'] > 80)]
+    [['key_message', 'brand_score', 'metric_date']]
+    .sort_values('metric_date', ascending=False)
+    .head(5)
+    [['key_message', 'brand_score']]
+)
+
