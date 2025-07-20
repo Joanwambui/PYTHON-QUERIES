@@ -512,3 +512,20 @@ result = (
     [['key_message', 'brand_score']]
 )
 
+
+-------------------------------------------------------------------------------------------------------------------------------
+SELECT
+  COUNT(DISTINCT viewer_id) AS unique_october_viewers
+FROM
+  viewer_interactions
+WHERE
+  interaction_date >= '2024-10-01'
+  AND interaction_date <  '2024-11-01';
+
+
+filtered = df[
+    (df['metric_date'] >= '2024-10-01') & 
+    (df['metric_date'] < '2025-01-01') 
+
+result = filtered['viewer_id'].nunique()
+print(result)
