@@ -529,3 +529,24 @@ filtered = df[
 
 result = filtered['viewer_id'].nunique()
 print(result)
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+SELECT viewer_id
+FROM viewer_interactions
+WHERE interaction_type = 'pause' AND
+interaction_date >= '2024-12-01'
+    AND interaction_date  < '2025-01-01'
+
+
+
+filtered = df[
+(df['interaction_date'] >= '2024-12-01') &
+(df['interaction_date'] < '2025-01-01')
+& df['interaction_type'] == 'pause']
+
+result = filtered['viewer_id']
+print(result)
+
+----------------------------------------------------------------------------------------------------------------------------------
+
