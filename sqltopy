@@ -615,4 +615,4 @@ WHERE f.loan_issued_date >= '2024-01-01'
 GROUP BY variability_category;
 
 
-
+--------------------------------------------------------
