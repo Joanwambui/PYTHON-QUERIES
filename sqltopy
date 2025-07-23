@@ -550,3 +550,46 @@ print(result)
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
+WITH jan_loans AS (
+  SELECT DISTINCT business_id
+  FROM fct_loans
+  WHERE loan_issued_date >= '2024-01-01'
+    AND loan_issued_date < '2024-02-01'
+)
+
+SELECT
+  AVG(CASE WHEN jl.business_id IS NOT NULL THEN db.monthly_revenue END) AS avg_revenue_received_loan,
+  AVG(CASE WHEN jl.business_id IS NULL THEN db.monthly_revenue END) AS avg_revenue_not_received_loan
+FROM dim_businesses db
+LEFT JOIN jan_loans jl
+  ON db.business_id = jl.business_id
+WHERE db.business_size = 'small';
+
+
+
+import pandas as pd
+
+# Step 1: Filter January 2024 loans
+jan_loans = fct_loans[
+    (fct_loans['loan_issued_date'] >= '2024-01-01') &
+    (fct_loans['loan_issued_date'] < '2024-02-01')
+][['business_id']].drop_duplicates()
+
+# Step 2: LEFT JOIN with dim_businesses
+merged = dim_businesses.merge(jan_loans, on='business_id', how='left', indicator=True)
+
+# Step 3: Filter for small businesses only
+small_businesses = merged[merged['business_size'] == 'small']
+
+# Step 4: Calculate the two averages
+avg_revenue_received_loan = small_businesses[small_businesses['_merge'] == 'both']['monthly_revenue'].mean()
+avg_revenue_not_received_loan = small_businesses[small_businesses['_merge'] == 'left_only']['monthly_revenue'].mean()
+
+# Step 5: Print results
+print(f"Average monthly revenue for small businesses that received a loan in Jan 2024: {avg_revenue_received_loan:.2f}")
+print(f"Average monthly revenue for small businesses that did NOT receive a loan in Jan 2024: {avg_revenue_not_received_loan:.2f}")
+
+
+
+
+
