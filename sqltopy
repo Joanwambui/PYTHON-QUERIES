@@ -600,6 +600,36 @@ WHERE f.loan_issued_date >= '2024-01-01'
   AND d.business_size = 'small';
 
 
+import pandas as pd
+
+# Step 1: Filter fct_loans for January 2024
+filtered = fct_loans[
+    (fct_loans['loan_issued_date'] >= '2024-01-01') &
+    (fct_loans['loan_issued_date'] < '2024-02-01')
+]
+
+# Step 2: INNER JOIN with dim_businesses on business_id
+merged = pd.merge(
+    filtered,
+    dim_businesses,
+    on='business_id',
+    how='inner'
+)
+
+# Step 3: Filter for small businesses
+small_businesses = merged[merged['business_size'] == 'small']
+
+# Step 4: Calculate repayment percentage
+repaid_count = (small_businesses['loan_repaid'] == 1).sum()
+total_loans = len(small_businesses)
+
+repayment_percentage = (repaid_count / total_loans) * 100 if total_loans > 0 else 0
+
+print(f"Repayment Percentage: {repayment_percentage:.2f}%")
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 SELECT
   CASE
     WHEN d.revenue_variability < 0.1 THEN 'Low'
