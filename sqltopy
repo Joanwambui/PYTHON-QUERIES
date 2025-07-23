@@ -590,6 +590,29 @@ print(f"Average monthly revenue for small businesses that received a loan in Jan
 print(f"Average monthly revenue for small businesses that did NOT receive a loan in Jan 2024: {avg_revenue_not_received_loan:.2f}")
 
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT
+  COUNT(CASE WHEN f.loan_repaid = 1 THEN 1 END) * 100.0 / COUNT(*) AS repayment_percentage
+FROM fct_loans f
+JOIN dim_businesses d ON f.business_id = d.business_id
+WHERE f.loan_issued_date >= '2024-01-01'
+  AND f.loan_issued_date < '2024-02-01'
+  AND d.business_size = 'small';
+
+
+SELECT
+  CASE
+    WHEN d.revenue_variability < 0.1 THEN 'Low'
+    WHEN d.revenue_variability BETWEEN 0.1 AND 0.3 THEN 'Medium'
+    WHEN d.revenue_variability > 0.3 THEN 'High'
+  END AS variability_category,
+  COUNT(CASE WHEN f.loan_repaid = 1 THEN 1 END) * 100.0 / COUNT(*) AS repayment_percentage
+FROM fct_loans f
+JOIN dim_businesses d ON f.business_id = d.business_id
+WHERE f.loan_issued_date >= '2024-01-01'
+  AND f.loan_issued_date < '2024-02-01'
+  AND d.business_size = 'small'
+GROUP BY variability_category;
 
 
 
