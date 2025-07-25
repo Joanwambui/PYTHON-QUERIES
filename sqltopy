@@ -661,3 +661,4 @@ countpickup = (filtered['pickup_count'] == 1).sum()
 totalcount = len(filtered)
 pickup_percentage = (countpickup/totalcount)*100 if totalcount > 0 else 0
 
+
