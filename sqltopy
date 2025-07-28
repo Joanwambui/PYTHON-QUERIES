@@ -662,4 +662,19 @@ countpickup = (filtered['pickup_count'] == 1).sum()
 totalcount = len(filtered)
 pickup_percentage = (countpickup/totalcount)*100 if totalcount > 0 else 0
 
+------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT 
+  CASE 
+    WHEN pickup_count = 2 THEN 'Only_two'
+    WHEN pickup_count >= 3 THEN 'Three_or_more'
+  END AS pickup_segment,
+  AVG(delivery_time) AS avg_delivery_time
+FROM fct_delivery_routes
+WHERE route_date >= '2024-10-01' AND route_date < '2025-01-01'
+  AND pickup_count >= 2
+GROUP BY 
+  CASE 
+    WHEN pickup_count = 2 THEN 'Only_two'
+    WHEN pickup_count >= 3 THEN 'Three_or_more'
+  END;
 
