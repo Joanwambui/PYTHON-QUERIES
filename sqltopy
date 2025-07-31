@@ -725,4 +725,34 @@ GROUP BY d.component_name
 ORDER BY d.component_name;
 
 
+import pandas as pd
+
+# Step 1: Filter interactions to May 2024
+filtered_interactions = fct_storyline_interactions[
+    (fct_storyline_interactions['interaction_date'] >= '2024-05-01') &
+    (fct_storyline_interactions['interaction_date'] < '2024-06-01')
+]
+
+# Step 2: Merge with components using LEFT JOIN
+merged = dim_storyline_components.merge(
+    filtered_interactions,
+    on='storyline_component_id',
+    how='left'
+)
+
+# Step 3: Group by component_name and count unique players (use dropna to ignore components with no interactions)
+result = (
+    merged.groupby('component_name')['player_id']
+    .nunique()
+    .reset_index(name='unique_player_count')
+    .sort_values('component_name')
+)
+
+# Step 4: Replace NaNs with 0 for components that had no interactions
+result['unique_player_count'] = result['unique_player_count'].fillna(0).astype(int)
+
+# Display the result
+print(result)
+
+
 
