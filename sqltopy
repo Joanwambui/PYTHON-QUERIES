@@ -712,4 +712,17 @@ avg_earnings_per_pickup = total_earnings / total_pickups
 print("Average earnings per pickup:", avg_earnings_per_pickup)
 
 
+-----------------------------------------------------------------------------------------------------------------
+SELECT 
+    d.component_name,
+    COALESCE(COUNT(DISTINCT f.player_id), 0) AS unique_player_count
+FROM dim_storyline_components d
+LEFT JOIN fct_storyline_interactions f 
+    ON d.storyline_component_id = f.storyline_component_id 
+    AND f.interaction_date >= '2024-05-01' 
+    AND f.interaction_date < '2024-06-01'
+GROUP BY d.component_name
+ORDER BY d.component_name;
+
+
 
