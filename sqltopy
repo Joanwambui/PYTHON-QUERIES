@@ -755,4 +755,28 @@ result['unique_player_count'] = result['unique_player_count'].fillna(0).astype(i
 print(result)
 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------
+WITH valid_players AS (
+    SELECT 
+        player_id
+    FROM fct_storyline_interactions
+    WHERE interaction_date >= '2024-05-01' 
+      AND interaction_date < '2024-06-01'
+    GROUP BY player_id
+    HAVING COUNT(DISTINCT storyline_component_id) >= 2
+)
+
+SELECT 
+    d.component_name,
+    f.player_id,
+    COUNT(f.interaction_id) AS total_interactions
+FROM fct_storyline_interactions f
+JOIN dim_storyline_components d 
+    ON f.storyline_component_id = d.storyline_component_id
+JOIN valid_players vp 
+    ON f.player_id = vp.player_id
+WHERE f.interaction_date >= '2024-05-01' 
+  AND f.interaction_date < '2024-06-01'
+GROUP BY d.component_name, f.player_id
+ORDER BY d.component_name, f.player_id;
 
