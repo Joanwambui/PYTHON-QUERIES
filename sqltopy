@@ -786,3 +786,9 @@ filtered = dim_groups[(dim_groups['created_date'] >= '2024-10-01') & # The follo
 result = filtered['participant_count'].max()
 print(result)
 
+----------------------------------------------------------------------------------------------------------------------------------------------
+filtered = dim_groups[(dim_groups['created_date'] >= '2024-10-01') & # The following tables are loaded as pandas DataFrames with the same names: dim_groups
+(dim_groups['created_date'] < '2024-11-01')]
+result = filtered['participant_count'].max()
+print(result)
+
