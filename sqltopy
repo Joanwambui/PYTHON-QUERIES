@@ -797,3 +797,48 @@ filtered = dim_groups[(dim_groups['created_date'] >= '2024-10-01') & # The follo
 (dim_groups['created_date'] < '2024-11-01')]
 result = filtered['participant_count'].mean()
 print(result)
+-----------------------------------------------------------------------------------------
+
+SELECT 
+    dp.product_category,
+    AVG(CAST(fap.clicks AS FLOAT) / NULLIF(fap.impressions, 0) * 100) AS avg_ctr
+FROM 
+    fct_ad_performance fap
+JOIN 
+    dim_product dp ON fap.product_id = dp.product_id
+WHERE 
+    fap.recorded_date >= '2024-10-01' 
+    AND fap.recorded_date < '2024-11-01'
+    AND dp.product_category ILIKE '%Electronics%'
+GROUP BY 
+    dp.product_category
+ORDER BY 
+    avg_ctr DESC;
+
+
+
+import pandas as pd
+
+# Step 1: Filter fct_ad_performance to October 2024
+ads_oct = fct_ad_performance[
+    (fct_ad_performance["recorded_date"] >= '2024-10-01') &
+    (fct_ad_performance["recorded_date"] < '2024-11-01')
+]
+
+# Step 2: Join with dim_product to get category info
+merged = ads_oct.merge(dim_product, on='product_id', how='inner')
+
+# Step 3: Filter only product categories that contain 'Electronics'
+electronics_ads = merged[merged["product_category"].str.contains("Electronics", case=False, na=False)]
+
+# Step 4: Calculate CTR per row
+electronics_ads["ctr"] = (electronics_ads["clicks"] / electronics_ads["impressions"]) * 100
+
+# Step 5: Compute average CTR per Electronics-related category
+result = electronics_ads.groupby("product_category")["ctr"].mean().reset_index()
+
+# Optional: Sort by CTR descending
+result = result.sort_values(by="ctr", ascending=False)
+
+# Display
+print(result)
