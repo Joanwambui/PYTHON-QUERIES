@@ -871,3 +871,16 @@ high_performing_categories = high_performing_categories.sort_values(by="ctr", as
 
 # Display
 print(high_performing_categories)
+
+-----------------------------------------------------------------------------------------------------------------
+mask = (data["visit_date"] >= "2024-07-01") & (data["visit_date"] < "2024-08-01")
+
+result = (
+    data.loc[mask]
+        .groupby(["guest_id", "visit_date", "park_experience_type"])["amount_spent"].mean()
+        .groupby("park_experience_type").mean()
+        .reindex(data["park_experience_type"].unique(), fill_value=0.0)
+        .reset_index(name="avg_spent")
+)
+
+print(result)
