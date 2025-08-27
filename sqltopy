@@ -884,3 +884,36 @@ result = (
 )
 
 print(result)
+
+
+------------------------------------------------------------------------------------------------------------------------
+SELECT 
+    SUM(f.quantity_sold) AS Total_Sales_Volume
+FROM fct_sales f
+INNER JOIN dim_products d
+    ON f.product_id = d.product_id
+WHERE d.category = 'Essential Household'
+  AND f.sale_date >= '2024-07-01'
+  AND f.sale_date < '2024-08-01';
+
+
+import pandas as pd
+
+# Step 1: Merge sales with product info
+merged = fct_Sales.merge(
+    dim_products,
+    on='product_id',
+    how='inner'
+)
+
+# Step 2: Filter to Essential Household and July 2024
+filtered_interactions = merged[
+    (merged['category'] == 'Essential Household') &
+    (merged['sale_date'] >= '2024-07-01') &
+    (merged['sale_date'] < '2024-08-01')
+]
+
+# Step 3: Compute total sales volume
+result = filtered_interactions['quantity_sold'].sum()
+
+print("Total_Sales_Volume:", result)
