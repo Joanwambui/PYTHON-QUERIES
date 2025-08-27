@@ -917,3 +917,22 @@ filtered_interactions = merged[
 result = filtered_interactions['quantity_sold'].sum()
 
 print("Total_Sales_Volume:", result)
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+SELECT 
+    d.product_id,
+    d.product_name,
+    CASE 
+        WHEN AVG(f.unit_price) < 5 THEN 'Low'
+        WHEN AVG(f.unit_price) BETWEEN 5 AND 15 THEN 'Medium'
+        WHEN AVG(f.unit_price) > 15 THEN 'High'
+    END AS Category_average
+FROM fct_sales f
+INNER JOIN dim_products d
+    ON f.product_id = d.product_id
+WHERE d.category = 'Essential Household'
+  AND f.sale_date >= '2024-07-01'
+  AND f.sale_date < '2024-08-01'
+GROUP BY d.product_id, d.product_name;
