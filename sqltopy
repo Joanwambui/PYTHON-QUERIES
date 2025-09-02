@@ -991,3 +991,48 @@ result = filtered['user_id'].nunique()
 
 print(result)
 
+
+------------------------------------------------------------------------------------------------------
+SELECT 
+    AVG(stream_count) AS avg_streams_per_recommended_artist
+FROM (
+    SELECT 
+        us.user_id,
+        us.artist_id,
+        COUNT(*) AS stream_count
+    FROM user_streams us
+    INNER JOIN artist_recommendations ar
+        ON us.user_id = ar.user_id
+       AND us.artist_id = ar.artist_id
+    WHERE us.stream_date >= ar.recommendation_date
+      AND us.stream_date >= '2024-05-01'
+      AND us.stream_date < '2024-06-01'
+    GROUP BY us.user_id, us.artist_id
+) t;
+
+
+
+import pandas as pd
+
+# Merge on both user_id and artist_id
+merged = user_streams.merge(
+    artist_recommendations,
+    on=['user_id', 'artist_id'],
+    how='inner'
+)
+
+# Filter streams that happened on or after recommendation_date
+filtered = merged[
+    (merged['stream_date'] >= merged['recommendation_date']) &
+    (merged['stream_date'] >= '2024-05-01') &
+    (merged['stream_date'] < '2024-06-01')
+]
+
+# Count streams per (user_id, artist_id)
+grouped = filtered.groupby(['user_id', 'artist_id']).size().reset_index(name='stream_count')
+
+# Average across recommended artists
+avg_streams_per_recommended_artist = grouped['stream_count'].mean()
+
+print(avg_streams_per_recommended_artist)
+
