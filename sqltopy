@@ -961,3 +961,33 @@ GROUP BY
     END
 ORDER BY Total_Sales_Volume DESC
 LIMIT 1;
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+SELECT COUNT(DISTINCT u.user_id) AS unique_users
+FROM user_streams u
+INNER JOIN artist_recommendations a
+ON u.user_id = a.user_id
+AND u.artist_id = a.artist_id
+WHERE stream_date >= recommendation_date
+
+
+import pandas as pd
+
+# Merge on both user_id and artist_id
+merged = user_streams.merge(
+    artist_recommendations,
+    on=['user_id', 'artist_id'],
+    how='inner'
+)
+
+# Keep only streams that happened on or after recommendation_date
+filtered = merged[merged['stream_date'] >= merged['recommendation_date']]
+
+# Count unique users
+result = filtered['user_id'].nunique()
+
+print(result)
+
