@@ -1036,3 +1036,36 @@ avg_streams_per_recommended_artist = grouped['stream_count'].mean()
 
 print(avg_streams_per_recommended_artist)
 
+-------------------------------------------------------------------------------------------------------------------------
+with cte AS (
+SELECT COUNT(DISTINCT u.artist_id) as artist_recommendations
+FROM user_streams u
+INNER JOIN artist_recommendations a
+ON u.user_id = a.user_id
+AND u.artist_id = a.artist_id
+WHERE u.stream_date>=a.recommendation_date AND u.artist_id IS NOT NULL
+GROUP BY u.user_id)
+
+SELECT AVG(artist_recommendations)
+FROM cte
+
+
+
+import pandas as pd
+
+# Merge
+merged = user_streams.merge(
+    artist_recommendations,
+    on=["user_id", "artist_id"],
+    how="inner"
+)
+# Filter condition
+filtered = merged[
+    (merged["stream_date"] >= merged["recommendation_date"]) &
+    (merged["artist_id"].notnull())
+]
+# Group by user, count distinct artist_id, then take average
+cte = filtered.groupby("user_id")["artist_id"].nunique()
+result = cte.mean()
+print(result)
+
