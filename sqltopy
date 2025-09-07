@@ -1069,3 +1069,51 @@ cte = filtered.groupby("user_id")["artist_id"].nunique()
 result = cte.mean()
 print(result)
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+with cte AS (
+SELECT f.click_id,f.user_id,f.event_id,f.click_date,u.preferred_category,
+e.category_name, CASE WHEN u.preferred_category=e.category_name THEN 'Yes' 
+  ELSE 'No' END AS Label
+FROM fct_event_clicks f
+INNER JOIN dim_events e
+ON f.event_id = e.event_id
+INNER JOIN dim_users u
+ON f.user_id = u.user_id
+WHERE f.click_date >= '2024-03-01' 
+  AND f.click_date < '2024-04-01')
+
+SELECT user_id, category_name, label
+FROM cte
+
+
+
+
+
+import pandas as pd
+import numpy as np
+
+# 1. Join tables
+merged = (
+    fct_event_clicks
+    .merge(dim_events, on="event_id", how="inner")
+    .merge(dim_users, on="user_id", how="inner")
+)
+
+# 2. Ensure click_date is datetime
+merged["click_date"] = pd.to_datetime(merged["click_date"])
+
+# 3. Filter by date range
+filtered = merged[
+    (merged["click_date"] >= "2024-03-01") &
+    (merged["click_date"] < "2024-04-01")
+]
+
+# 4. Add computed column (CASE WHEN … THEN … ELSE …)
+filtered["Label"] = np.where(
+    filtered["preferred_category"] == filtered["category_name"],
+    "Yes",
+    "No"
+)
+
+# 5. Select final columns
+result = filtered[["user_id", "category_name", "Label"]]
