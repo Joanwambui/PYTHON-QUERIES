@@ -1,0 +1,14 @@
+import sys
+import math
+
+# Read the number of characters
+char_count = int(input())
+
+# Read the ASCII codes and convert them to integers
+char_codes = list(map(int, input().split()))
+
+# Convert ASCII codes to characters and join them into a string
+result = ''.join(chr(code) for code in char_codes)
+
+# Print the final result
+print(result)
