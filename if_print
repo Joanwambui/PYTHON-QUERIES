@@ -12,3 +12,15 @@ elif b == total:
     print('Just enough bread')
 else:
     print('Not enough bread')
+
+
+byte = input("Enter a binary string: ")
+x = 0
+
+for i in byte:
+    if i == '1':   # compare with string '1'
+        x += 1
+    else:
+        pass       # do nothing
+
+print(x * 2)
