@@ -1,0 +1,20 @@
+# Read inputs in the correct order
+time = int(input())
+fuel = int(input())
+fuel_consumption = int(input())
+distance = int(input())
+velocity = int(input())
+
+# Calculate distance rocket can cover
+y = fuel * fuel_consumption
+x = velocity * time
+
+# Apply conditions
+if x < distance and y < distance:
+    print("Failure, Not enough time")
+elif x < distance:
+    print("Failure, Not enough time")
+elif y < distance:
+    print("Failure, Not enough fuel")
+else:
+    print("Welcome to Mars")
