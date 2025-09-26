@@ -1117,3 +1117,18 @@ filtered["Label"] = np.where(
 
 # 5. Select final columns
 result = filtered[["user_id", "category_name", "Label"]]
+
+--------------------------------------------------------------------------------------------------------------------------------------
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+
+n = int(input())
+k = int(input())
+
+# Write an answer using print
+# To debug: print("Debug messages...", file=sys.stderr, flush=True)
+
+print(int(math.factorial(n)/(math.factorial(n-k)*math.factorial(k))))
