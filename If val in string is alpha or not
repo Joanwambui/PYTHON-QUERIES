@@ -1,0 +1,14 @@
+x = input("Enter text: ")
+
+# Check length
+if len(x) < 15:
+    print("Too short")
+elif len(x) > 34:
+    print("Too long")
+
+# Check first two characters
+elif not (x[0].isalpha() and x[1].isalpha()):
+    print("Contains special characters")
+
+else:
+    print("Valid input")
