@@ -12,3 +12,21 @@ result = ''.join(chr(code) for code in char_codes)
 
 # Print the final result
 print(result)
+--------------------------------------------------------------------------------
+
+def is_valid(s):
+    return 15 <= len(s) <= 34 and s.isalnum()
+
+def transform_string(s):
+    # Step 1: move first 4 chars to the end
+    s = s[4:] + s[:4]
+
+    # Step 2: convert to numbers
+    result = ""
+    for char in s:
+        if char.isdigit():
+            result += char
+        else:
+            # Convert letter to number (A=10 ... Z=35, case-insensitive)
+            result += str(ord(char.upper()) - 55)  # ord('A')=65 → 10
+    return int(result)  # final number
