@@ -1179,3 +1179,20 @@ guest_spending['spending_segment'] = guest_spending['total_spent'].apply(categor
 print(guest_spending.head())
 
 
+SELECT 
+    guest_id,
+    SUM(amount_spent) AS total_spent,
+    CASE 
+        WHEN SUM(amount_spent) < 50 THEN 'Low'
+        WHEN SUM(amount_spent) < 100 THEN 'Medium'
+        ELSE 'High'
+    END AS spending_segment
+FROM fct_guest_spending
+WHERE 
+    visit_date >= '2024-09-01'
+    AND visit_date < '2024-10-01'
+GROUP BY guest_id
+HAVING SUM(amount_spent) > 0
+ORDER BY total_spent DESC;
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
