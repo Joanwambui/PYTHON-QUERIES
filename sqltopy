@@ -1144,4 +1144,38 @@ for i in range(n):
             result += char
     print(result)
 
+-------------------------------------------------------------------------------------------------------------
+import pandas as pd
+
+# Example: load data (replace this with your actual data source)
+# fct_guest_spending = pd.read_csv("fct_guest_spending.csv")
+
+# --- Step 1: Filter for September 2024 ---
+fct_guest_spending['visit_date'] = pd.to_datetime(fct_guest_spending['visit_date'])
+sept_data = fct_guest_spending[
+    (fct_guest_spending['visit_date'].dt.year == 2024) &
+    (fct_guest_spending['visit_date'].dt.month == 9)
+]
+
+# --- Step 2: Aggregate total spending per guest ---
+guest_spending = sept_data.groupby('guest_id', as_index=False)['amount_spent'].sum()
+guest_spending.rename(columns={'amount_spent': 'total_spent'}, inplace=True)
+
+# --- Step 3: Exclude guests with no purchases (0 or NaN) ---
+guest_spending = guest_spending[guest_spending['total_spent'] > 0]
+
+# --- Step 4: Categorize spending ---
+def categorize_spending(amount):
+    if amount < 50:
+        return "Low"
+    elif amount < 100:
+        return "Medium"
+    else:
+        return "High"
+
+guest_spending['spending_segment'] = guest_spending['total_spent'].apply(categorize_spending)
+
+# --- Step 5: View results ---
+print(guest_spending.head())
+
 
