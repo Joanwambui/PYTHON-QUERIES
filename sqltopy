@@ -1195,4 +1195,18 @@ GROUP BY guest_id
 HAVING SUM(amount_spent) > 0
 ORDER BY total_spent DESC;
 --------------------------------------------------------------------------------------------------------------------------------------------------------
+import pandas as pd
+
+# Ensure 'sale_date' is datetime
+fct_sales["sale_date"] = pd.to_datetime(fct_sales["sale_date"])
+
+# Apply the filters
+filtered_sales = fct_sales[
+    (fct_sales["sale_date"] >= "2025-01-01") &
+    (fct_sales["sale_date"] < "2025-04-01") &
+    (fct_sales["sale_amount"].isna())
+]
+
+# Display the filtered records
+print(filtered_sales)
 
