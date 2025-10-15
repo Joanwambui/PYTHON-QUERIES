@@ -1210,3 +1210,14 @@ filtered_sales = fct_sales[
 # Display the filtered records
 print(filtered_sales)
 
+#UNIQUE VALUES FOR "celebrity_id", "product_id"
+filtered_sales = fct_sales[
+    (fct_sales["sale_date"] >= "2025-01-01") &
+    (fct_sales["sale_date"] < "2025-04-01")
+]
+
+# Keep only the first row of each unique (celebrity_id, product_id) pair
+filtered_sales = filtered_sales.drop_duplicates(subset=["celebrity_id", "product_id"])
+
+print(filtered_sales)
+
