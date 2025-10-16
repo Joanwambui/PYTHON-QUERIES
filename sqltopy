@@ -1221,3 +1221,16 @@ filtered_sales = filtered_sales.drop_duplicates(subset=["celebrity_id", "product
 
 print(filtered_sales)
 
+---------------------------------------------------------------------------------------
+filtered_sales = fct_sales[
+    (fct_sales["sale_date"] >= "2025-01-01") &
+    (fct_sales["sale_date"] < "2025-04-01")
+]
+
+result = (
+    filtered_sales
+    .groupby("celebrity_id")["sale_amount"]
+    .sum()
+    .sort_values(ascending=False)
+)
+result
