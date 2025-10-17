@@ -1,0 +1,21 @@
+import math
+
+fct_transactions["transaction_date"] = pd.to_datetime(fct_transactions["transaction_date"])
+
+# Filter date range
+filtered = fct_transactions[
+    (fct_transactions["transaction_date"] >= "2024-10-01") &
+    (fct_transactions["transaction_date"] < "2025-01-01")
+]
+
+# Count transactions per user
+tx_per_user = filtered.groupby("user_id")["transaction_id"].count()
+
+# Floor average
+baseline_floor = math.floor(tx_per_user.mean())
+
+# Ceiling average
+baseline_ceiling = math.ceil(tx_per_user.mean())
+
+print("Floor:", baseline_floor)
+print("Ceiling:", baseline_ceiling)
