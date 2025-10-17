@@ -1234,3 +1234,22 @@ result = (
     .sort_values(ascending=False)
 )
 result
+
+--------------------------------------------------------------------------------------------------
+# Convert and filter
+fct_transactions["transaction_date"] = pd.to_datetime(fct_transactions["transaction_date"])
+df = fct_transactions[
+    (fct_transactions["transaction_date"] >= "2024-10-01") &
+    (fct_transactions["transaction_date"] < "2025-01-01")
+]
+
+# Group by user and compute stats
+g = df.groupby("user_id")["transaction_date"].agg(['min', 'max', 'count'])
+g["days_diff"] = (g["max"] - g["min"]).dt.days
+
+# Averages
+avg_2 = g[g["count"] == 2]["days_diff"].mean()
+avg_3_plus = g[g["count"] >= 3]["days_diff"].mean()
+
+print(avg_2, avg_3_plus)
+
