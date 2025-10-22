@@ -1,0 +1,9 @@
+students = {"Alice": 85, "Bob": 92, "Charlie": 78}
+top_student = max(students, key=students.get)
+print(top_student)
+
+students.get tells Python to look at the scores when comparing.
+
+max() then finds the key (name) that has the largest value (score)
+
+Use max(dictionary, key=dictionary.get) to get the key with the highest value
