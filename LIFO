@@ -1,0 +1,12 @@
+stack = []
+
+# Push items onto the stack
+stack.append(10)
+stack.append(20)
+stack.append(30)
+
+# Pop items from the stack
+print(stack.pop())  # Removes 30
+print(stack.pop())  # Removes 20
+
+print(stack)        # [10]
