@@ -1,0 +1,24 @@
+import pandas as pd
+
+# Filter transactions between April 1 and June 30, 2025
+data = fct_transactions[
+    (fct_transactions["transaction_date"] >= "2025-04-01") &
+    (fct_transactions["transaction_date"] < "2025-07-01")
+]
+
+# Keep only credit card transactions within this period
+data_c = data[data["payment_method"] == "credit_card"]
+
+# Number of credit card transactions
+N = len(data_c)
+
+# Average order value (AOV) for credit card transactions
+AOV = data_c["order_value"].mean()
+
+# Predicted sales lift:
+# 20% of credit card transactions switch to pay-over-time,
+# and those orders increase in value by 15%
+lift = 0.20 * N * AOV * 0.15
+
+# Output predicted lift for the period
+print(lift)
