@@ -1253,3 +1253,16 @@ avg_3_plus = g[g["count"] >= 3]["days_diff"].mean()
 
 print(avg_2, avg_3_plus)
 
+-----------------------------------------------------------------------------------------------------------
+import pandas as pd
+
+# Filter rows between dates
+data = fct_transactions[
+    (fct_transactions["transaction_date"] >= "2025-04-01") &
+    (fct_transactions["transaction_date"] < "2025-07-01")
+]
+
+# Group by payment_method and count transaction_id
+data = data.groupby("payment_method")["transaction_id"].count()
+
+print(data)
