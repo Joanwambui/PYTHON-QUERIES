@@ -1,0 +1,21 @@
+import numpy as np
+
+ads_sept = fct_guest_spending[
+    (fct_guest_spending["visit_date"] >= '2024-09-01') &
+    (fct_guest_spending["visit_date"] < '2024-10-01') &
+    (fct_guest_spending["amount_spent"] > 0)
+].copy()
+
+ads_sept["total"] = ads_sept.groupby("guest_id")["amount_spent"].transform("sum")
+
+conditions = [
+    ads_sept["total"] < 50,
+    ads_sept["total"].between(50, 99.9999),
+    ads_sept["total"] >= 100
+]
+
+choices = ["Low", "Medium", "High"]
+
+ads_sept["category"] = np.select(conditions, choices, default=None)
+
+print(ads_sept)
