@@ -1280,3 +1280,38 @@ data = data.groupby("payment_method")["order_value"].mean()
 
 print(data)
 ----------------------------------------------------------------------------------------------------------------------------
+
+import pandas as pd
+
+# Merge the two DataFrames
+data = pd.merge(fct_photo_sharing, dim_user, on="user_id", how="inner")
+
+# Filter for users either under 18 OR over 50, not from the US, during Q3 2024
+filtered_data = data[
+    ((data["age"] < 18) | (data["age"] > 50)) &
+    (data["country"] != "United States") &
+    (data["shared_date"] >= "2024-07-01") &
+    (data["shared_date"] < "2024-10-01")
+]
+
+# Count number of photos shared by those users
+photo_count = filtered_data["photo_id"].count()
+
+print(photo_count)
+--------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
