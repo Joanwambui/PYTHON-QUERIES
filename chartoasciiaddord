@@ -1,0 +1,7 @@
+s = input()
+
+total = 0
+for char in s:
+    total += ord(char)
+
+print(total)
