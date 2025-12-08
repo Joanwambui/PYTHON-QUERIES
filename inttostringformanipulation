@@ -1,0 +1,7 @@
+n = input().strip()   # keep it as a string
+
+total = 0
+for digit in n:
+    total += int(digit)
+
+print(total)
