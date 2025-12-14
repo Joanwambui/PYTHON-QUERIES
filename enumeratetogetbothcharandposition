@@ -1,0 +1,8 @@
+s = input()
+
+result = ""
+for i, ch in enumerate(s):
+    if i % 2 == 1:   # keep odd indices
+        result += ch
+
+print(result)
