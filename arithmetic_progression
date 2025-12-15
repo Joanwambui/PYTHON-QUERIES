@@ -1,0 +1,6 @@
+A = int(input())
+D = int(input())
+N = int(input())
+
+nth_term = A + (N - 1) * D
+print(nth_term)
