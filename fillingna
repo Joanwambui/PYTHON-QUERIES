@@ -1,0 +1,17 @@
+# Total number of rows
+total_rows = len(df)
+
+# Rows with at least one missing value
+missing_rows = df.isnull().any(axis=1).sum()
+print (total_rows)
+print(missing_rows)
+# Percentage of rows with missing values
+missing_percentage = (missing_rows / total_rows) * 100
+
+df_cleaned = df.fillna({
+    'customer_id': 0,
+    'region': 'Unknown',
+    'demographic_group': 'Unspecified',
+    'pre_order_date': '0000-00-00',  # or pd.NaT if keeping date dtype
+    'pre_order_quantity': 0
+})
