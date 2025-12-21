@@ -1,0 +1,25 @@
+import pandas as pd
+
+# Fill missing values
+df_cleaned = df.fillna({
+    "customer_id": 0,
+    "region": "Unknown",
+    "demographic_group": "Unspecified",
+    "pre_order_quantity": 0
+})
+
+# Convert date column
+df_cleaned["pre_order_date"] = pd.to_datetime(
+    df_cleaned["pre_order_date"], errors="coerce"
+)
+
+# Extract month
+df_cleaned["month"] = df_cleaned["pre_order_date"].dt.month
+
+# Aggregate
+result = df_cleaned.groupby(
+    ["month", "region", "demographic_group"],
+    as_index=False
+)["pre_order_quantity"].sum()
+
+print(result)
