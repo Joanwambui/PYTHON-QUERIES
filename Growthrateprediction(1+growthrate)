@@ -1,0 +1,17 @@
+# Convert date column
+pre_sale_data["pre_order_date"] = pd.to_datetime(
+    pre_sale_data["pre_order_date"], errors="coerce"
+)
+# Convert date column
+julydata =pre_sale_data.loc[(pre_sale_data["pre_order_date"]>="2024-07-01") & (pre_sale_data["pre_order_date"]< "2024-08-01")]
+
+julyqtty =julydata.groupby("region")["pre_order_quantity"].sum()
+
+augdata =pre_sale_data.loc[(pre_sale_data["pre_order_date"]>="2024-08-01") & (pre_sale_data["pre_order_date"]< "2024-09-01")]
+
+augqtty =augdata.groupby("region")["pre_order_quantity"].sum()
+
+growthrate=(augqtty - julyqtty )/ julyqtty
+
+sepqtty = augqtty * (1 + growthrate)
+print(sepqtty)
