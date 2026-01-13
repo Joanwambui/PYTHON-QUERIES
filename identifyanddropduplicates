@@ -1,0 +1,12 @@
+duplicates = ice_cream_sales_data[
+    ice_cream_sales_data.duplicated(subset=["transaction_id"], keep=False)
+]
+
+print(duplicates)
+
+
+ice_cream_sales_data_cleaned = ice_cream_sales_data.drop_duplicates(
+    subset=["transaction_id"],
+    keep="first"
+)
+
