@@ -1,0 +1,21 @@
+# Convert sale_date to datetime
+ice_cream_sales_data["sale_date"] = pd.to_datetime(ice_cream_sales_data["sale_date"])
+
+# Year-Month (this is the missing piece)
+ice_cream_sales_data["year_month"] = ice_cream_sales_data["sale_date"].dt.to_period("M")
+
+# Monthly sales volume
+data = ice_cream_sales_data.groupby("year_month")["sales_volume"].sum()
+print(data)
+
+# IQR
+Q1 = data.quantile(0.25)
+Q3 = data.quantile(0.75)
+IQR = Q3 - Q1
+print(IQR)
+
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+outliers = data[(data < lower_bound) | (data > upper_bound)]
+print(outliers)
