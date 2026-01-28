@@ -1,0 +1,17 @@
+import pandas as pd
+
+# Ensure date is datetime
+stories_data["story_date"] = pd.to_datetime(stories_data["story_date"])
+
+# 1) Sum stories per user per day
+daily_stories = stories_data.groupby(["user_id", "story_date"])["story_count"].sum().reset_index()
+
+# 2) Find users who had at least one day with >10 stories
+users_10_plus = daily_stories[daily_stories["story_count"] > 10]["user_id"].nunique()
+
+# 3) Total users
+total_users = stories_data["user_id"].nunique()
+
+# 4) Percentage
+percentage = (users_10_plus / total_users) * 100
+print(percentage)
