@@ -1,0 +1,26 @@
+# Note: pandas and numpy are already imported as pd and np
+# The following tables are loaded as pandas DataFrames with the same names: fct_transactions, dim_risk_flags
+# Please print your final result or dataframe
+
+
+# Make sure transaction_date is a datetime column
+fct_transactions["transaction_date"] = pd.to_datetime(fct_transactions["transaction_date"])
+
+# Filter for October 2024
+oct_2024 = fct_transactions[
+    (fct_transactions["transaction_date"] >= "2024-10-01") &
+    (fct_transactions["transaction_date"] < "2024-11-01")
+]
+
+# Keep rows where email does NOT end with gmail.com, yahoo.com, or hotmail.com
+result = oct_2024[
+    ~oct_2024["customer_email"].str.lower().str.endswith(
+        ("gmail.com", "yahoo.com", "hotmail.com"),
+        na=False
+    )
+]
+
+# Count transactions
+final_result = result["transaction_id"].nunique()
+
+print(final_result)
